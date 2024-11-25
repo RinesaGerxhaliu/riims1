@@ -1,0 +1,89 @@
+# Visual Studio specific
+.vs/
+*.vscode/
+*.suo
+*.user
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.log
+*.cache/
+*.zip
+*.rar
+
+# NuGet Packages
+packages/
+*.nupkg
+*.snupkg
+
+# Rider / Resharper
+.idea/
+*.sln.iml
+_ReSharper*/
+*.DotSettings.user
+
+# Test Results
+TestResults/
+*.trx
+
+# User-specific files
+*.userprefs
+*.usertasks
+*.dbmdl
+*.jfm
+*.pfx
+*.publishsettings
+
+# ASP.NET Core Secrets
+**/appsettings.Development.json
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.old
+*.swp
+*~
+
+# React / Node.js specific
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+bower_components/
+
+# Logs
+logs/
+*.log
+*.tlog
+*.log.*
+*.log.*
+
+# Configuration files
+*.local.settings.json
+*.vspscc
+*.vssscc
+
+# Other IDEs/Editors
+.idea/
+.DS_Store
+Thumbs.db
+*.sublime-workspace
+*.sublime-project
+
+# Output directories
+dist/
+build/
+out/
+
+# Specific to your project structure
+riims-front/node_modules/
+riims/obj/
+riims/bin/
