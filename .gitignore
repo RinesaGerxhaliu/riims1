@@ -1,9 +1,27 @@
 # Visual Studio specific
+# Visual Studio specific
 .vs/
 *.vscode/
 *.suo
 *.user
 *.sln.docstates
+
+# Build results
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.log
+*.cache/
+
+# NuGet Packages
+packages/
+*.nupkg
+
+# ASP.NET Core Secrets
+**/appsettings.Development.json
+
 
 # Build results
 bin/
