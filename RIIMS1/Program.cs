@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using riims1.Data;
+using RIIMSAPI.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
