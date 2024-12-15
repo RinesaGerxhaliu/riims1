@@ -17,7 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Application\RIIMS.Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\RIIMS.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

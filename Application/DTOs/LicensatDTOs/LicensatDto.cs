@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs.LicensatDTOs
+﻿namespace RIIMS.Application.DTOs.LicensatDTOs
 {
     public class LicensatDto
     {

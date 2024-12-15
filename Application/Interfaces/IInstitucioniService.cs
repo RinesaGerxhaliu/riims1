@@ -1,4 +1,5 @@
-﻿using RIIMS1.Domain.Entities;
+﻿using RIIMS.Application.DTOs.InstitucioniDTOs;
+using RIIMS.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    internal interface IInstitucioniService
+    public interface IInstitucioniService
     {
-        Task<List<Institucioni>> GetAllAsync();
-        Task<Institucioni?> GetByIdAsync(Guid id);
-        Task<Institucioni> CreateAsync(Institucioni institucioni);
-        Task<Institucioni?> UpdateAsync(Guid id, Institucioni institucioni);
-        Task<Institucioni?> DeleteAsync(Guid id);
-        Task<Institucioni?> GetByNameAsync(string name);
+        Task<List<InstitucioniDTO>> GetAllAsync();
+        Task<InstitucioniDTO?> GetByIdAsync(Guid id);
+        Task<InstitucioniDTO> CreateAsync(AddInstitucioniRequestDTO addInstitucioni);
+        Task<InstitucioniDTO?> UpdateAsync(Guid id, UpdateInstitucioniRequestDTO updateInstitucioni);
+        Task<InstitucioniDTO?> DeleteAsync(Guid id);
+        Task<InstitucioniDTO?> GetByNameAsync(string name);
     }
 }

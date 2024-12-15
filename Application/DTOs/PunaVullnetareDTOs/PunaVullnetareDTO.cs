@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs.PunaVullnetareDTOs
+﻿namespace RIIMS.Application.DTOs.PunaVullnetareDTOs
 {
     public class PunaVullnetareDTO
     {

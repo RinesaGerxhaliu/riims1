@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs.UserGjuhetDTOs
+﻿namespace RIIMS.Application.DTOs.UserGjuhetDTOs
 {
     public class AddUserGjuhetRequestDTO
     {

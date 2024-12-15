@@ -1,6 +1,6 @@
-﻿namespace RIIMS1.Application.DTOs.InstitucioniDTOs
+﻿namespace RIIMS.Application.DTOs.InstitucioniDTOs
 {
-    public class InstitucioniDto
+    public class InstitucioniDTO
     {
         public Guid Id { get; set; }
 

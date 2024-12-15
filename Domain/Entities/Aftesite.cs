@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Domain.Entities
+﻿namespace RIIMS.Domain.Entities
 {
     public class Aftesite
     {
@@ -7,7 +7,7 @@
         public string Emri { get; set; }
 
         //Foreign Key
-        public string UserId { get; set; }
+        public int UserId { get; set; }
 
         //Navigation Property
         public User User { get; set; }

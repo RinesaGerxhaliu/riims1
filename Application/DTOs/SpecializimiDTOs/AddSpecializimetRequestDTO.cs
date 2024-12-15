@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs.SpecializimiDTOs
+﻿namespace RIIMS.Application.DTOs.SpecializimiDTOs
 {
     public class AddSpecializimetRequestDTO
     {

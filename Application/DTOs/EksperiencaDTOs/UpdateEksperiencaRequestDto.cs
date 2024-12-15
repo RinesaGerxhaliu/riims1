@@ -1,4 +1,4 @@
-﻿namespace riims.Models.DTO.EksperiencDto
+﻿namespace RIIMS.Application.DTOs.EdukimiDTOs
 {
     public class UpdateEksperiencaRequestDto
     {

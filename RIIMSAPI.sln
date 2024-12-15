@@ -5,11 +5,11 @@ VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RIIMSAPI", "RIIMS1\RIIMSAPI.csproj", "{B7B103FE-AB47-45A8-B1BE-F4D605C9DCF7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{2B9EB869-5906-4B37-8954-A1B986A8A8FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RIIMS.Domain", "Domain\RIIMS.Domain.csproj", "{2B9EB869-5906-4B37-8954-A1B986A8A8FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{91054C87-8D56-4E36-8F5A-8041D1591330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RIIMS.Application", "Application\RIIMS.Application.csproj", "{91054C87-8D56-4E36-8F5A-8041D1591330}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{757148EF-0407-4DDF-A825-832844FAFD88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RIIMS.Infrastructure", "Infrastructure\RIIMS.Infrastructure.csproj", "{757148EF-0407-4DDF-A825-832844FAFD88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

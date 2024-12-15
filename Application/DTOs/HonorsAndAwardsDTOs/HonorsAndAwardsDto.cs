@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs.HonorsAndAwardsDTOs
+﻿namespace RIIMS.Application.DTOs.HonorsAndAwardsDTOs
 {
     public class HonorsAndAwardsDto
     {

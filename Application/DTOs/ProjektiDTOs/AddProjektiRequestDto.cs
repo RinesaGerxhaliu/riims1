@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs.ProjektiDTOs
+﻿namespace RIIMS.Application.DTOs.ProjektiDTOs
 {
     public class AddProjektiRequestDto
     {

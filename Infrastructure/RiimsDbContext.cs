@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RIIMS1.Domain.Entities;
+using RIIMS.Domain.Entities;
 namespace RIIMSAPI.Infrastructure
 
 {

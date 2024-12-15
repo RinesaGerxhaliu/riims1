@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Domain.Entities
+﻿namespace RIIMS.Domain.Entities
 {
     public class MbikqyresITemave
     {
@@ -10,7 +10,7 @@
         
         public DateTime data { get; set; }
 
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public User User { get; set; }
 
         public Guid? DepartamentiId { get; set; }

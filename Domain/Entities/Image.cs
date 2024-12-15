@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RIIMS1.Domain.Entities
+namespace RIIMS.Domain.Entities
 {
     public class Image
     {

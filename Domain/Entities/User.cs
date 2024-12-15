@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Domain.Entities
+﻿namespace RIIMS.Domain.Entities
 {
     public class User
     {

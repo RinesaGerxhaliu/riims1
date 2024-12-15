@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs.PublikimiDTOs
+﻿namespace RIIMS.Application.DTOs.PublikimiDTOs
 {
     public class PublikimiDTO
     {

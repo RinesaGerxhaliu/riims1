@@ -1,6 +1,6 @@
-﻿namespace riims.Models.DTO.EksperiencDto
+﻿namespace RIIMS.Application.DTOs.EdukimiDTOs
 {
-    public class EksperiencaDto
+    public class EksperiencaDTO
     {
         public Guid Id { get; set; }
 

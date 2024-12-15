@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Domain.Entities
+﻿namespace RIIMS.Domain.Entities
 {
     public class Specializimet
     {
@@ -18,7 +18,7 @@
 
         public int? nrKredive { get; set; }
         
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public User User { get; set; }
 
         public Guid InstitucioniId { get; set; }

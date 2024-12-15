@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
-namespace RIIMS1.Application.DTOs
+namespace RIIMS.Application.DTOs
 {
     public class ImageUploadRequestDto
     {

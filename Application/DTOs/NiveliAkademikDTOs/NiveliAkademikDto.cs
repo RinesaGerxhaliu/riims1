@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs.NiveliAkademikDTOs
+﻿namespace RIIMS.Application.DTOs.NiveliAkademikDTOs
 {
     public class NiveliAkademikDto
     {

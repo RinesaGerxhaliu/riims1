@@ -1,4 +1,4 @@
-﻿using RIIMS1.Application.DTOs.AftesiteDTOs;
+﻿using RIIMS.Application.DTOs.AftesiteDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    internal interface IAftesiaService
+    public interface IAftesiaService
     {
-        Task<List<AftesiaDTO>> GetAllAsync(string userId);
+        Task<List<AftesiaDTO>> GetAllAsync(int userId);
         Task<AftesiaDTO?> GetByIdAsync(Guid id);
-        Task<AftesiaDTO> CreateAsync(string userId, AddAftesiaRequestDTO addAftesia);
+        Task<AftesiaDTO> CreateAsync(int userId, AddAftesiaRequestDTO addAftesia);
         Task<AftesiaDTO?> UpdateAsync(Guid id, UpdateAftesiaRequestDTO updateAftesiaRequest);
         Task<AftesiaDTO?> DeleteAsync(Guid id);
     }

@@ -1,13 +1,13 @@
-﻿using RIIMS1.Domain.Entities;
+﻿using RIIMS.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces
+namespace RIIMSAPI.Domain.Interfaces
 {
-    internal interface IInstitucioniRepository
+    public interface IInstitucioniRepository
     {
         Task<List<Institucioni>> GetAllAsync();
         Task<Institucioni?> GetByIdAsync(Guid id);

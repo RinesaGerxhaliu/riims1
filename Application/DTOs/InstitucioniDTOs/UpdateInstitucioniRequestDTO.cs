@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs.InstitucioniDTOs
+﻿namespace RIIMS.Application.DTOs.InstitucioniDTOs
 {
     public class UpdateInstitucioniRequestDTO
     {

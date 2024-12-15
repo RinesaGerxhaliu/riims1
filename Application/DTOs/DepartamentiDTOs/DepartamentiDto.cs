@@ -1,6 +1,6 @@
 ﻿
 
-namespace RIIMS1.Application.DTOs.DepartamentiDTOs
+namespace RIIMS.Application.DTOs.DepartamentiDTOs
 {
     public class DepartamentiDto
     {

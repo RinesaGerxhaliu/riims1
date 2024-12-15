@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs
+﻿namespace RIIMS.Application.DTOs
 {
     public class LoginResponseDTO
     {

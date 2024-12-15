@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs.NiveliGjuhesorDTOs
+﻿namespace RIIMS.Application.DTOs.NiveliGjuhesorDTOs
 {
     public class AddNiveliGjuhesorRequestDTO
     {

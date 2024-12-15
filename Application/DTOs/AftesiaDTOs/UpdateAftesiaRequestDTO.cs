@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs.AftesiteDTOs
+﻿namespace RIIMS.Application.DTOs.AftesiteDTOs
 {
     public class UpdateAftesiaRequestDTO
     {

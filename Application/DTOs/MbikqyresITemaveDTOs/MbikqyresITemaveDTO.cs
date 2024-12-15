@@ -1,4 +1,4 @@
-﻿namespace RIIMS1.Application.DTOs.MbikqyresITemaveDTOs
+﻿namespace RIIMS.Application.DTOs.MbikqyresITemaveDTOs
 {
     public class MbikqyresITemaveDTO
     {
