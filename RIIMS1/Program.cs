@@ -10,6 +10,17 @@ using RIIMS.Application.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.WithOrigins("http://localhost:3000")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials();
+    });
+});
+
 // Add services to the DI container
 
 builder.Services.AddDbContext<RiimsDbContext>(options =>
@@ -24,6 +35,8 @@ builder.Services.AddScoped<IPunaVullnetareService, PunaVullnetareService>();
 builder.Services.AddScoped<ISpecializimiService, SpecializimetService>();
 builder.Services.AddScoped<INiveliAkademikService, NiveliAkademikService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IDepartmentiService, DepartmentiService>();
+builder.Services.AddScoped<IPublikimiService, PublikimiService>();
 
 // Infrastructure Repositories
 builder.Services.AddScoped<IAftesiaRepository, AftesiaRepository>();
@@ -32,6 +45,9 @@ builder.Services.AddScoped<IPunaVullnetareRepository, PunaVullnetareRepository>(
 builder.Services.AddScoped<ISpecializimetRepository, SpecializimetRepository>();
 builder.Services.AddScoped<INiveliAkademikRepository, NiveliAkademikRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IDepartmentiRepository, DepartmeniRepository>();
+builder.Services.AddScoped<IPublikimiRepository, PublikimiRepository>();
+
 
 
 
