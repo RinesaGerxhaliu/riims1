@@ -37,6 +37,9 @@ builder.Services.AddScoped<INiveliAkademikService, NiveliAkademikService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IDepartmentiService, DepartmentiService>();
 builder.Services.AddScoped<IPublikimiService, PublikimiService>();
+builder.Services.AddScoped<ILicensaService,LicensaService>();
+builder.Services.AddScoped<IProjektiService, ProjektiService>();
+builder.Services.AddScoped<IMbikqyresITemaveService, MbikqyresITemaveService>();
 
 // Infrastructure Repositories
 builder.Services.AddScoped<IAftesiaRepository, AftesiaRepository>();
@@ -47,6 +50,9 @@ builder.Services.AddScoped<INiveliAkademikRepository, NiveliAkademikRepository>(
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IDepartmentiRepository, DepartmeniRepository>();
 builder.Services.AddScoped<IPublikimiRepository, PublikimiRepository>();
+builder.Services.AddScoped<ILicensaRepository,LicensaRepository>();
+builder.Services.AddScoped<IProjektiRepository, ProjektiRepository>();
+builder.Services.AddScoped<IMbikqyresITemaveRepository, MbikqyresITemaveRepository>();
 
 
 

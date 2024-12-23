@@ -14,8 +14,6 @@
 
         public string description { get; set; }
 
-        public string asocohet { get; set; }
-
         public string EmriInstitucionit { get; set; }
 
         public string UserId { get; set; }

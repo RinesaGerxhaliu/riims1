@@ -79,5 +79,6 @@ namespace RIIMS.Infrastructure.Repositories
             return await dbcontext.Departamenti
                 .FirstOrDefaultAsync(i => i.Emri == name);
         }
+
     }
 }
