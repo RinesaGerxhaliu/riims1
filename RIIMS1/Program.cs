@@ -7,6 +7,7 @@ using RIIMSAPI.Domain.Interfaces;
 using RIIMSAPI.Infrastructure;
 using RIIMS.Infrastructure.Repositories;
 using RIIMS.Application.Interfaces;
+using RIIMS.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,9 @@ builder.Services.AddScoped<IPublikimiService, PublikimiService>();
 builder.Services.AddScoped<ILicensaService,LicensaService>();
 builder.Services.AddScoped<IProjektiService, ProjektiService>();
 builder.Services.AddScoped<IMbikqyresITemaveService, MbikqyresITemaveService>();
+builder.Services.AddScoped<INiveliGjuhesorService, NiveliGjuhesorService>();
+builder.Services.AddScoped<IGjuhetService, GjuhetService>();
+builder.Services.AddScoped<IUserGjuhetService, UserGjuhetService>();
 
 // Infrastructure Repositories
 builder.Services.AddScoped<IAftesiaRepository, AftesiaRepository>();
@@ -53,6 +57,9 @@ builder.Services.AddScoped<IPublikimiRepository, PublikimiRepository>();
 builder.Services.AddScoped<ILicensaRepository,LicensaRepository>();
 builder.Services.AddScoped<IProjektiRepository, ProjektiRepository>();
 builder.Services.AddScoped<IMbikqyresITemaveRepository, MbikqyresITemaveRepository>();
+builder.Services.AddScoped<INiveliGjuhesorRepository, NiveliGjuhesorRepository>();
+builder.Services.AddScoped<IGjuhetRepository, GjuhetRepository>();
+builder.Services.AddScoped<IUserGjuhetRepository, UserGjuhetRepository>();
 
 
 
