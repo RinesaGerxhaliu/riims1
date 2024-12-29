@@ -25,7 +25,10 @@ builder.Services.AddCors(options =>
 // Add services to the DI container
 
 builder.Services.AddDbContext<RiimsDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("RiimsConnectionString")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("RiimsConnectionString"),
+        sqlOptions => sqlOptions.MigrationsAssembly("RIIMSAPI") // Specify the migrations assembly here
+    ));
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

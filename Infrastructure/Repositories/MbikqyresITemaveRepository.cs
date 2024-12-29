@@ -18,7 +18,7 @@ namespace RIIMS.Infrastructure.Repositories
         {
             this.dbcontext = dbcontext;
         }
-        public async Task<MbikqyresITemave> CreateAsync(int userId, MbikqyresITemave mbikqyres)
+        public async Task<MbikqyresITemave> CreateAsync(string userId, MbikqyresITemave mbikqyres)
         {
             mbikqyres.UserId = userId;
             await dbcontext.MbikqyresITemave.AddAsync(mbikqyres);
@@ -43,7 +43,7 @@ namespace RIIMS.Infrastructure.Repositories
             return existingMbikqyres;
         }
 
-        public async Task<List<MbikqyresITemave>> GetAllAsync(int userId)
+        public async Task<List<MbikqyresITemave>> GetAllAsync(string userId)
         {
             return await dbcontext.MbikqyresITemave
              .Include(a => a.Departamenti)

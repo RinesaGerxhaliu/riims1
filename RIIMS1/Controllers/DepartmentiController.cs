@@ -18,7 +18,7 @@ namespace RIIMSAPI.Controllers
             _departmentiService = departmentiService;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public async Task<IActionResult> GetAll()
         {
             int userId = 1;
@@ -48,7 +48,7 @@ namespace RIIMSAPI.Controllers
             var result = await _departmentiService.CreateAsync(addDepartamenti);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }
+        }*/
 
         // UPDATE AFTESIA BY ID
         [HttpPut("{id:guid}")]

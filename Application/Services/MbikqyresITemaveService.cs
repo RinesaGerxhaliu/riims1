@@ -28,7 +28,7 @@ namespace RIIMS.Application.Services
             _mapper = mapper;
         } 
 
-        public async Task<MbikqyresITemaveDTO> CreateAsync(int userId, AddMbikqyresRequestDTO add)
+        public async Task<MbikqyresITemaveDTO> CreateAsync(string userId, AddMbikqyresRequestDTO add)
         {
             var departamenti = await EnsureDepartamentExistsAsync(add.EmriDepartamentit);
 
@@ -48,7 +48,7 @@ namespace RIIMS.Application.Services
             return _mapper.Map<MbikqyresITemaveDTO>(deletedMbikqyres);
         }
 
-        public async Task<List<MbikqyresITemaveDTO>> GetAllAsync(int userId)
+        public async Task<List<MbikqyresITemaveDTO>> GetAllAsync(string userId)
         {
             var mbikqyresList = await _mbikqyresITemaveRepository.GetAllAsync(userId);
             return _mapper.Map<List<MbikqyresITemaveDTO>>(mbikqyresList);

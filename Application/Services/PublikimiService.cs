@@ -28,7 +28,7 @@ namespace RIIMS.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<List<PublikimiDTO>> GetAllAsync(int userId)
+        public async Task<List<PublikimiDTO>> GetAllAsync(string userId)
         {
             var aftesiteList = await _publikimiRepository.GetAllAsync(userId);
             return _mapper.Map<List<PublikimiDTO>>(aftesiteList);
@@ -40,7 +40,7 @@ namespace RIIMS.Application.Services
             return _mapper.Map<PublikimiDTO>(aftesite);
         }
 
-        public async Task<PublikimiDTO> CreateAsync(int userId, AddPublikimiRequestDTO addPublikimi)
+        public async Task<PublikimiDTO> CreateAsync(string userId, AddPublikimiRequestDTO addPublikimi)
         {
             var institution = await EnsureInstitutionExistsAsync(addPublikimi.EmriDepartamentit);
 

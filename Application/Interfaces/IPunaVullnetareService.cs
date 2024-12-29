@@ -10,9 +10,9 @@ namespace RIIMS.Application.Interfaces
 {
     public interface IPunaVullnetareService
     {
-        Task<List<PunaVullnetareDTO>> GetAllAsync(int userId);
+        Task<List<PunaVullnetareDTO>> GetAllAsync(string userId);
         Task<PunaVullnetareDTO?> GetByIdAsync(Guid id);
-        Task<PunaVullnetareDTO> CreateAsync(int userId, AddPunaVullnetareRequestDTO addAftesia);
+        Task<PunaVullnetareDTO> CreateAsync(string userId, AddPunaVullnetareRequestDTO addAftesia);
         Task<PunaVullnetareDTO?> UpdateAsync(Guid id, UpdatePunaVullnetareRequestDTO updatePunaVullnetareRequestDTO);
         Task<PunaVullnetareDTO?> DeleteAsync(Guid id);
     }

@@ -18,7 +18,7 @@ namespace RIIMSAPI.Controllers
             _aftesiaService = aftesiaService;
         }
 
-        // GET ALL AFTESITE 
+        /*// GET ALL AFTESITE 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -44,12 +44,12 @@ namespace RIIMSAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddAftesiaRequestDTO addAftesite)
         {
-            int userId = 1;
+            string userId = 1;
 
             var result = await _aftesiaService.CreateAsync(userId, addAftesite);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }
+        }*/
 
         // UPDATE AFTESIA BY ID
         [HttpPut("{id:guid}")]

@@ -10,9 +10,9 @@ namespace RIIMS.Application.Interfaces
 {
     public interface IPublikimiService
     {
-        Task<List<PublikimiDTO>> GetAllAsync(int userId);
+        Task<List<PublikimiDTO>> GetAllAsync(string userId);
         Task<PublikimiDTO?> GetByIdAsync(Guid id);
-        Task<PublikimiDTO> CreateAsync(int userId, AddPublikimiRequestDTO addPublikimi);
+        Task<PublikimiDTO> CreateAsync(string userId, AddPublikimiRequestDTO addPublikimi);
         Task<PublikimiDTO?> UpdateAsync(Guid id, UpdatePublikimiRequestDTO updatePublikimi);
         Task<PublikimiDTO?> DeleteAsync(Guid id);
     }

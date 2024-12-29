@@ -28,7 +28,7 @@ namespace RIIMS.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<List<PunaVullnetareDTO>> GetAllAsync(int userId)
+        public async Task<List<PunaVullnetareDTO>> GetAllAsync(string userId)
         {
             var aftesiteList = await _punaVullnetareRepository.GetAllAsync(userId);
             return _mapper.Map<List<PunaVullnetareDTO>>(aftesiteList);
@@ -40,7 +40,7 @@ namespace RIIMS.Application.Services
             return _mapper.Map<PunaVullnetareDTO>(aftesite);
         }
 
-        public async Task<PunaVullnetareDTO> CreateAsync(int userId, AddPunaVullnetareRequestDTO addPunaVullnetare)
+        public async Task<PunaVullnetareDTO> CreateAsync(string userId, AddPunaVullnetareRequestDTO addPunaVullnetare)
         {
             var institution = await EnsureInstitutionExistsAsync(addPunaVullnetare.EmriInstitucionit);
 

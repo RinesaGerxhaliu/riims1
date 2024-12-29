@@ -19,10 +19,10 @@ namespace RIIMSAPI.Controllers
             _userGjuhetService = userGjuhetService;
         }
 
-        [HttpGet]
+       /* [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            int userId = 1;
+            //string userId = 1;
 
             var userGjuhetList = await _userGjuhetService.GetAllAsync(userId);
             return Ok(userGjuhetList);
@@ -42,7 +42,7 @@ namespace RIIMSAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddUserGjuhetRequestDTO add)
         {
-            int userId = 1;
+            //string userId = 1;
 
             var result = await _userGjuhetService.CreateAsync(userId, add);
 
@@ -58,7 +58,7 @@ namespace RIIMSAPI.Controllers
                 return NotFound();
             }
             return Ok(updatedUserGjuhet);
-        }
+        }*/
 
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)

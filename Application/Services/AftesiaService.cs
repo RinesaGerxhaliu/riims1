@@ -22,7 +22,7 @@ namespace RIIMS.Application.Services
         }
 
         // Get ALL AFTESITE
-        public async Task<List<AftesiaDTO>> GetAllAsync(int userId)
+        public async Task<List<AftesiaDTO>> GetAllAsync(string userId)
         {
             var aftesiteList = await _aftesiaRepository.GetAllAsync(userId);
             return _mapper.Map<List<AftesiaDTO>>(aftesiteList); 
@@ -36,7 +36,7 @@ namespace RIIMS.Application.Services
         }
 
         // CREATE AFTESIA
-        public async Task<AftesiaDTO> CreateAsync(int userId, AddAftesiaRequestDTO addAftesia)
+        public async Task<AftesiaDTO> CreateAsync(string userId, AddAftesiaRequestDTO addAftesia)
         {
             var institution = await EnsureInstitutionExistsAsync(addAftesia.EmriInstitucionit);
 

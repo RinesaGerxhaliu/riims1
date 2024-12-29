@@ -19,7 +19,7 @@ namespace RIIMS.Infrastructure.Repositories
             this.dbcontext = dbcontext;
         }
 
-        public async Task<UserGjuhet> CreateAsync(int userId, UserGjuhet userGjuhet)
+        public async Task<UserGjuhet> CreateAsync(string userId, UserGjuhet userGjuhet)
         {
             userGjuhet.UserId = userId;
             await dbcontext.UserGjuhet.AddAsync(userGjuhet);
@@ -45,7 +45,7 @@ namespace RIIMS.Infrastructure.Repositories
             return existingGjuha;
         }
 
-        public async Task<List<UserGjuhet>> GetAllAsync(int userId)
+        public async Task<List<UserGjuhet>> GetAllAsync(string userId)
         {
             return await dbcontext.UserGjuhet
              .Include(x => x.NiveliGjuhesor)

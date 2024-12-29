@@ -28,7 +28,7 @@ namespace RIIMS.Application.Services
             _mapper = mapper;
         } 
 
-        public async Task<ProjektiDto> CreateAsync(int userId, AddProjektiRequestDto addProjekti)
+        public async Task<ProjektiDto> CreateAsync(string userId, AddProjektiRequestDto addProjekti)
         {
             var institution = await EnsureInstitutionExistsAsync(addProjekti.EmriInstitucionit);
 
@@ -47,7 +47,7 @@ namespace RIIMS.Application.Services
             return _mapper.Map<ProjektiDto>(deletedProjekti);
         }
 
-        public async Task<List<ProjektiDto>> GetAllAsync(int userId)
+        public async Task<List<ProjektiDto>> GetAllAsync(string userId)
         {
             var projektiList = await _projektiRepository.GetAllAsync(userId);
             return _mapper.Map<List<ProjektiDto>>(projektiList);

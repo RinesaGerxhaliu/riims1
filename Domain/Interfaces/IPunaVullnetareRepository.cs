@@ -10,9 +10,9 @@ namespace RIIMS.Domain.Interfaces
 {
     public interface IPunaVullnetareRepository
     {
-        Task<List<PunaVullnetare>> GetAllAsync(int userId);
+        Task<List<PunaVullnetare>> GetAllAsync(string userId);
         Task<PunaVullnetare?> GetByIdAsync(Guid id);
-        Task<PunaVullnetare> CreateAsync(int userId, PunaVullnetare punaVullnetare);
+        Task<PunaVullnetare> CreateAsync(string userId, PunaVullnetare punaVullnetare);
         Task<PunaVullnetare?> UpdateAsync(Guid id, PunaVullnetare punaVullnetare);
         Task<PunaVullnetare?> DeleteAsync(Guid id);
     }

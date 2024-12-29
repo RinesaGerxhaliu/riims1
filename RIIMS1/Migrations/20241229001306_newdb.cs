@@ -1,12 +1,12 @@
-﻿#nullable disable
-
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RIIMSAPI.Infrastructure.Migrations
+#nullable disable
 
+namespace RIIMSAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class DatabaseRiimsDb : Migration
+    public partial class newdb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -98,8 +98,7 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 name: "User",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     emri = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     mbiemri = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     adresa = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -130,8 +129,7 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Emri = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     InstitucioniId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -144,8 +142,8 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Aftesite_User_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Aftesite_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -161,8 +159,7 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     DataFillimit = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataMbarimit = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Pershkrimi = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     InstitucioniId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NiveliAkademikId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
@@ -181,8 +178,8 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         principalTable: "NiveliAkademik",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Edukimi_User_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Edukimi_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -200,8 +197,7 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     DataFillimit = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataMbarimit = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Pershkrimi = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     InstitucioniId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -214,8 +210,8 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Eksperienca_User_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Eksperienca_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -230,8 +226,7 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     issuer = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     dataEleshimit = table.Column<DateTime>(type: "datetime2", nullable: false),
                     pershkrimi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     InstitucioniId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -244,8 +239,8 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_HonorsAndAwards_User_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_HonorsAndAwards_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -261,8 +256,7 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     DataSkadimit = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CredentialId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CredentialUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     InstitucioniId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -275,8 +269,8 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Licensat_User_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Licensat_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -290,8 +284,7 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     titulliTemes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     studenti = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     data = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DepartamentiId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -303,8 +296,8 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         principalTable: "Departamenti",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_MbikqyresITemave_User_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_MbikqyresITemave_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -320,8 +313,7 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     endDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     collaborators = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     InstitucioniId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -334,8 +326,8 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Projekti_User_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Projekti_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -351,8 +343,7 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     LinkuPublikimit = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AutoriKryesor = table.Column<bool>(type: "bit", nullable: true),
                     DataPublikimi = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DepartamentiId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -365,8 +356,8 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Publikimi_User_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Publikimi_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -381,8 +372,7 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     DataFillimit = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataMbarimit = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Pershkrimi = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     InstitucioniId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -395,8 +385,8 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PunaVullnetare_User_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_PunaVullnetare_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -414,8 +404,7 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     aftesiteEfituara = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     pershkrimi = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     nrKredive = table.Column<int>(type: "int", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     InstitucioniId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -428,8 +417,8 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Specializimet_User_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Specializimet_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -440,8 +429,7 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     GjuhaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NiveliGjuhesorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -461,8 +449,8 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserGjuhet_User_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_UserGjuhet_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -474,9 +462,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 column: "InstitucioniId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Aftesite_UserId1",
+                name: "IX_Aftesite_UserId",
                 table: "Aftesite",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Departamenti_InstitucioniId",
@@ -494,9 +482,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 column: "NiveliAkademikId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Edukimi_UserId1",
+                name: "IX_Edukimi_UserId",
                 table: "Edukimi",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Eksperienca_InstitucioniId",
@@ -504,9 +492,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 column: "InstitucioniId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Eksperienca_UserId1",
+                name: "IX_Eksperienca_UserId",
                 table: "Eksperienca",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HonorsAndAwards_InstitucioniId",
@@ -514,9 +502,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 column: "InstitucioniId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HonorsAndAwards_UserId1",
+                name: "IX_HonorsAndAwards_UserId",
                 table: "HonorsAndAwards",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Licensat_InstitucioniId",
@@ -524,9 +512,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 column: "InstitucioniId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Licensat_UserId1",
+                name: "IX_Licensat_UserId",
                 table: "Licensat",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MbikqyresITemave_DepartamentiId",
@@ -534,9 +522,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 column: "DepartamentiId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MbikqyresITemave_UserId1",
+                name: "IX_MbikqyresITemave_UserId",
                 table: "MbikqyresITemave",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projekti_InstitucioniId",
@@ -544,9 +532,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 column: "InstitucioniId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projekti_UserId1",
+                name: "IX_Projekti_UserId",
                 table: "Projekti",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Publikimi_DepartamentiId",
@@ -554,9 +542,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 column: "DepartamentiId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Publikimi_UserId1",
+                name: "IX_Publikimi_UserId",
                 table: "Publikimi",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PunaVullnetare_InstitucioniId",
@@ -564,9 +552,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 column: "InstitucioniId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PunaVullnetare_UserId1",
+                name: "IX_PunaVullnetare_UserId",
                 table: "PunaVullnetare",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Specializimet_InstitucioniId",
@@ -574,9 +562,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 column: "InstitucioniId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Specializimet_UserId1",
+                name: "IX_Specializimet_UserId",
                 table: "Specializimet",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_ImageId",
@@ -599,9 +587,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                 column: "NiveliGjuhesorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserGjuhet_UserId1",
+                name: "IX_UserGjuhet_UserId",
                 table: "UserGjuhet",
-                column: "UserId1");
+                column: "UserId");
         }
 
         /// <inheritdoc />

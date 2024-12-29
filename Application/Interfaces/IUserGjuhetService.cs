@@ -10,9 +10,9 @@ namespace RIIMS.Application.Interfaces
 {
     public interface IUserGjuhetService
     {
-        Task<List<UserGjuhetDTO>> GetAllAsync(int userId);
+        Task<List<UserGjuhetDTO>> GetAllAsync(string userId);
         Task<UserGjuhetDTO?> GetByIdAsync(Guid id);
-        Task<UserGjuhetDTO> CreateAsync(int userId, AddUserGjuhetRequestDTO add);
+        Task<UserGjuhetDTO> CreateAsync(string userId, AddUserGjuhetRequestDTO add);
         Task<UserGjuhetDTO?> UpdateAsync(Guid id, UpdateUserGjuhetRequestDTO update);
         Task<UserGjuhetDTO?> DeleteAsync(Guid id);
     }

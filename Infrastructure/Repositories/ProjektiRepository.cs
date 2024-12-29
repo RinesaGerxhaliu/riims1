@@ -19,7 +19,7 @@ namespace RIIMS.Infrastructure.Repositories
         {
             this.dbcontext = dbcontext;
         }
-        public async Task<Projekti> CreateAsync(int userId, Projekti projekti)
+        public async Task<Projekti> CreateAsync(string userId, Projekti projekti)
         {
             projekti.UserId = userId;
             await dbcontext.Projekti.AddAsync(projekti);
@@ -44,7 +44,7 @@ namespace RIIMS.Infrastructure.Repositories
             return existingProjekti;
         }
 
-        public async Task<List<Projekti>> GetAllAsync(int userId)
+        public async Task<List<Projekti>> GetAllAsync(string userId)
         {
             return await dbcontext.Projekti
              .Include(a => a.Institucioni)

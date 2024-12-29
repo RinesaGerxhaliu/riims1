@@ -10,7 +10,7 @@
         
         public DateTime data { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
 
         public Guid? DepartamentiId { get; set; }

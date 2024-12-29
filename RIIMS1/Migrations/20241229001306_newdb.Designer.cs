@@ -9,11 +9,11 @@ using RIIMSAPI.Infrastructure;
 
 #nullable disable
 
-namespace RIIMSAPI.Infrastructure.Migrations
+namespace RIIMSAPI.Migrations
 {
     [DbContext(typeof(RiimsDbContext))]
-    [Migration("20241215154651_UserId datatype fix")]
-    partial class UserIddatatypefix
+    [Migration("20241229001306_newdb")]
+    partial class newdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,8 +38,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     b.Property<Guid>("InstitucioniId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -99,8 +100,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     b.Property<string>("Pershkrimi")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -147,8 +149,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -183,8 +186,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     b.Property<Guid>("InstitucioniId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("dataEleshimit")
                         .HasColumnType("datetime2");
@@ -279,8 +283,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     b.Property<Guid>("InstitucioniId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -300,8 +305,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     b.Property<Guid?>("DepartamentiId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("data")
                         .HasColumnType("datetime2");
@@ -362,8 +368,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     b.Property<Guid>("InstitucioniId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("collaborators")
                         .HasColumnType("nvarchar(max)");
@@ -417,8 +424,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -451,8 +459,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -472,8 +481,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     b.Property<Guid>("InstitucioniId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("aftesiteEfituara")
                         .HasColumnType("nvarchar(max)");
@@ -508,11 +518,8 @@ namespace RIIMSAPI.Infrastructure.Migrations
 
             modelBuilder.Entity("RIIMS.Domain.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier");
@@ -561,8 +568,9 @@ namespace RIIMSAPI.Infrastructure.Migrations
                     b.Property<Guid>("NiveliGjuhesorId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 

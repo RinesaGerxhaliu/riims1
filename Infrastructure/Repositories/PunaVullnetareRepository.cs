@@ -16,7 +16,7 @@ namespace RIIMS.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<PunaVullnetare> CreateAsync(int userId, PunaVullnetare punaVullnetare)
+        public async Task<PunaVullnetare> CreateAsync(string userId, PunaVullnetare punaVullnetare)
         {
             punaVullnetare.UserId = userId;
             await _dbContext.PunaVullnetare.AddAsync(punaVullnetare);
@@ -40,7 +40,7 @@ namespace RIIMS.Infrastructure.Repositories
             return existingPuna;
         }
 
-        public async Task<List<PunaVullnetare>> GetAllAsync(int userId)
+        public async Task<List<PunaVullnetare>> GetAllAsync(string userId)
         {
             return await _dbContext.PunaVullnetare
                 .Include(p => p.Institucioni)

@@ -36,7 +36,7 @@ namespace RIIMS.Application.Services
         }
 
         // GET USER BY ID
-        public async Task<UserDTO?> GetByIdAsync(int id)  
+        public async Task<UserDTO?> GetByIdAsync(string id)  
         {
             var user = await _userRepository.GetByIdAsync(id);
             return _mapper.Map<UserDTO>(user);
@@ -44,7 +44,7 @@ namespace RIIMS.Application.Services
 
 
         // UPDATE USER BY ID
-        public async Task<UserDTO?> UpdateAsync(int id, UpdateUserRequestDTO updateUser)
+        public async Task<UserDTO?> UpdateAsync(string id, UpdateUserRequestDTO updateUser)
         {
             var institution = await EnsureInstitutionExistsAsync(updateUser.NiveliAkademik);
 
@@ -59,7 +59,7 @@ namespace RIIMS.Application.Services
         }
 
         // DELETE USER BY ID
-        public async Task<UserDTO?> DeleteAsync(int id)  
+        public async Task<UserDTO?> DeleteAsync(string id)  
         {
             var deletedUser = await _userRepository.DeleteAsync(id);
             return _mapper.Map<UserDTO>(deletedUser);

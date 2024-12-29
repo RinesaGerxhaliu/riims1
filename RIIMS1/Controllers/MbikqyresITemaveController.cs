@@ -18,7 +18,7 @@ namespace RIIMSAPI.Controllers
             _mbikqyresService = mbikqyresService;
         }
 
-        [HttpGet]
+       /* [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             int userId = 1;
@@ -46,7 +46,7 @@ namespace RIIMSAPI.Controllers
             var result = await _mbikqyresService.CreateAsync(userId, add);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }
+        }*/
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateMbikqyresRequestDTO update)

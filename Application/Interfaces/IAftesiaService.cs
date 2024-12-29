@@ -9,9 +9,9 @@ namespace Application.Interfaces
 {
     public interface IAftesiaService
     {
-        Task<List<AftesiaDTO>> GetAllAsync(int userId);
+        Task<List<AftesiaDTO>> GetAllAsync(string userId);
         Task<AftesiaDTO?> GetByIdAsync(Guid id);
-        Task<AftesiaDTO> CreateAsync(int userId, AddAftesiaRequestDTO addAftesia);
+        Task<AftesiaDTO> CreateAsync(string userId, AddAftesiaRequestDTO addAftesia);
         Task<AftesiaDTO?> UpdateAsync(Guid id, UpdateAftesiaRequestDTO updateAftesiaRequest);
         Task<AftesiaDTO?> DeleteAsync(Guid id);
     }

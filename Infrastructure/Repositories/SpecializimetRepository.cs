@@ -18,7 +18,7 @@ namespace RIIMS.Infrastructure.Repositories
         {
             this.dbcontext = dbcontext;
         }
-        public async Task<Specializimet> CreateAsync(int userId, Specializimet specializimet)
+        public async Task<Specializimet> CreateAsync(string userId, Specializimet specializimet)
         {
             specializimet.UserId = userId;
             await dbcontext.Specializimet.AddAsync(specializimet);
@@ -44,7 +44,7 @@ namespace RIIMS.Infrastructure.Repositories
             return existingAftesia;
         }
 
-        public async Task<List<Specializimet>> GetAllAsync(int userId)
+        public async Task<List<Specializimet>> GetAllAsync(string userId)
         {
             return await dbcontext.Specializimet
              .Include(a => a.Institucioni)

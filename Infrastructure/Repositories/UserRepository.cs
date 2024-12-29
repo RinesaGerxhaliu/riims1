@@ -21,7 +21,7 @@ namespace RIIMS.Infrastructure.Repositories
             return user;
         }
 
-        public async Task<User?> DeleteAsync(int id)  
+        public async Task<User?> DeleteAsync(string id)  
         {
             var existingUser = await dbcontext.User.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -43,14 +43,14 @@ namespace RIIMS.Infrastructure.Repositories
                 .ToListAsync();
         }
 
-        public async Task<User?> GetByIdAsync(int id)  
+        public async Task<User?> GetByIdAsync(string id)  
         {
             return await dbcontext.User
                 .Include(a => a.NiveliAkademik)
                 .FirstOrDefaultAsync(a => a.Id == id);
         }
 
-        public async Task<User?> UpdateAsync(int id, User user)  
+        public async Task<User?> UpdateAsync(string id, User user)  
         {
             var existingUser = await dbcontext.User.FirstOrDefaultAsync(a => a.Id == id);
 

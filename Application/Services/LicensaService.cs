@@ -27,7 +27,7 @@ namespace RIIMS.Application.Services
             _institucioniRepository = institucioniRepository;
             _mapper = mapper;
         }
-        public async Task<LicensatDto> CreateAsync(int userId, AddLicensatRequestDto addLicensat)
+        public async Task<LicensatDto> CreateAsync(string userId, AddLicensatRequestDto addLicensat)
         {
             var institution = await EnsureInstitutionExistsAsync(addLicensat.EmriInstitucionit);
 
@@ -46,7 +46,7 @@ namespace RIIMS.Application.Services
             return _mapper.Map<LicensatDto>(deletedLicensa);
         }
 
-        public async Task<List<LicensatDto>> GetAllAsync(int userId)
+        public async Task<List<LicensatDto>> GetAllAsync(string userId)
         {
             var licensatList = await _licensaRepository.GetAllAsync(userId);
             return _mapper.Map<List<LicensatDto>>(licensatList);

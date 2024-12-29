@@ -10,9 +10,9 @@ namespace RIIMS.Application.Interfaces
 {
     public interface ILicensaService
     {
-        Task<List<LicensatDto>> GetAllAsync(int userId);
+        Task<List<LicensatDto>> GetAllAsync(string userId);
         Task<LicensatDto?> GetByIdAsync(Guid id);
-        Task<LicensatDto> CreateAsync(int userId, AddLicensatRequestDto addLicensat);
+        Task<LicensatDto> CreateAsync(string userId, AddLicensatRequestDto addLicensat);
         Task<LicensatDto?> UpdateAsync(Guid id, UpdateLicensatRequestDto updateLicensat);
         Task<LicensatDto?> DeleteAsync(Guid id);
     }

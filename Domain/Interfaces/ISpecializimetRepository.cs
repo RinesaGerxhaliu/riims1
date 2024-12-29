@@ -9,9 +9,9 @@ namespace RIIMS.Domain.Interfaces
 {
     public interface ISpecializimetRepository
     {
-        Task<List<Specializimet>> GetAllAsync(int userId);
+        Task<List<Specializimet>> GetAllAsync(string userId);
         Task<Specializimet?> GetByIdAsync(Guid id);
-        Task<Specializimet> CreateAsync(int userId, Specializimet specializimet);
+        Task<Specializimet> CreateAsync(string userId, Specializimet specializimet);
         Task<Specializimet?> UpdateAsync(Guid id, Specializimet specializimet);
         Task<Specializimet?> DeleteAsync(Guid id);
     }

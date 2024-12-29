@@ -11,8 +11,8 @@ namespace RIIMS.Application.Interfaces
     public interface IUserService
     {
         Task<List<UserDTO>> GetAllAsync();
-        Task<UserDTO?> GetByIdAsync(int userId);
-        Task<UserDTO?> UpdateAsync(int userId, UpdateUserRequestDTO updateUserRequest);
-        Task<UserDTO?> DeleteAsync(int userId);
+        Task<UserDTO?> GetByIdAsync(string userId);
+        Task<UserDTO?> UpdateAsync(string userId, UpdateUserRequestDTO updateUserRequest);
+        Task<UserDTO?> DeleteAsync(string userId);
     }
 }

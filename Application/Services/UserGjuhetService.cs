@@ -30,7 +30,7 @@ namespace RIIMS.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<UserGjuhetDTO> CreateAsync(int userId, AddUserGjuhetRequestDTO add)
+        public async Task<UserGjuhetDTO> CreateAsync(string userId, AddUserGjuhetRequestDTO add)
         {
             var niveli = await EnsureNiveliExistsAsync(add.NiveliGjuhesor);
             var gjuha = await EnsureGjuhaExistsAsync(add.EmriGjuhes);
@@ -51,7 +51,7 @@ namespace RIIMS.Application.Services
             return _mapper.Map<UserGjuhetDTO>(deletedGjuha);
         }
 
-        public async Task<List<UserGjuhetDTO>> GetAllAsync(int userId)
+        public async Task<List<UserGjuhetDTO>> GetAllAsync(string userId)
         {
             var userGjuhetList = await _userGjuhetRepository.GetAllAsync(userId);
             return _mapper.Map<List<UserGjuhetDTO>>(userGjuhetList);

@@ -18,7 +18,7 @@ namespace RIIMSAPI.Controllers
             _punaVullnetareService = punaVullnetareService;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public async Task<IActionResult> GetAll()
         {
             int userId = 3;
@@ -46,7 +46,7 @@ namespace RIIMSAPI.Controllers
             var result = await _punaVullnetareService.CreateAsync(userId, addpunaVullnetareRequestDTO);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }
+        }*/
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdatePunaVullnetareRequestDTO updatePunaVullnetare)

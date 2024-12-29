@@ -10,9 +10,9 @@ namespace RIIMS.Application.Interfaces
 {
     public interface IProjektiService
     {
-        Task<List<ProjektiDto>> GetAllAsync(int userId);
+        Task<List<ProjektiDto>> GetAllAsync(string userId);
         Task<ProjektiDto?> GetByIdAsync(Guid id);
-        Task<ProjektiDto> CreateAsync(int userId, AddProjektiRequestDto addProjekti);
+        Task<ProjektiDto> CreateAsync(string userId, AddProjektiRequestDto addProjekti);
         Task<ProjektiDto?> UpdateAsync(Guid id, UpdateProjektiRequestDto updateProjekti);
         Task<ProjektiDto?> DeleteAsync(Guid id);
     }

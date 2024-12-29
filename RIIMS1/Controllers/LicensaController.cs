@@ -17,7 +17,7 @@ namespace RIIMSAPI.Controllers
             _licensaService = licensaService;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public async Task<IActionResult> GetAll()
         {
             int userId = 1;
@@ -46,7 +46,7 @@ namespace RIIMSAPI.Controllers
             var result = await _licensaService.CreateAsync(userId, addLicensa);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }
+        }*/
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateLicensatRequestDto update)

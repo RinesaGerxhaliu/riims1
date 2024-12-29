@@ -18,7 +18,7 @@ namespace RIIMSAPI.Controllers
             _specializimiService = specializimiService;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public async Task<IActionResult> GetAll()
         {
             int userId = 3;
@@ -47,7 +47,7 @@ namespace RIIMSAPI.Controllers
             var result = await _specializimiService.CreateAsync(userId, addSpecializimet);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }
+        }*/
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateSpecializimetRequestDTO updateSpecializimet)

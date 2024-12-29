@@ -9,9 +9,9 @@ namespace RIIMS.Domain.Interfaces
 {
     public interface IProjektiRepository
     {
-        Task<List<Projekti>> GetAllAsync(int userId);
+        Task<List<Projekti>> GetAllAsync(string userId);
         Task<Projekti?> GetByIdAsync(Guid id);
-        Task<Projekti> CreateAsync(int userId, Projekti projekti);
+        Task<Projekti> CreateAsync(string userId, Projekti projekti);
         Task<Projekti?> UpdateAsync(Guid id, Projekti projekti);
         Task<Projekti?> DeleteAsync(Guid id);
     }
