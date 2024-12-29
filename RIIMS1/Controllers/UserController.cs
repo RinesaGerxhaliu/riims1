@@ -7,7 +7,7 @@ using RIIMS.Application.Interfaces;
 
 namespace RIIMSAPI.Controllers
 {
-    [Route("api/[controller]")]
+    /*[Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -58,5 +58,5 @@ namespace RIIMSAPI.Controllers
             }
             return Ok(deletedAftesia);
         }
-    }
+    }*/
 }
