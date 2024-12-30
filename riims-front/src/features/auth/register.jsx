@@ -11,7 +11,8 @@ const Register = () => {
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.id]: e.target.value });
+        const { id, value } = e.target;
+        setFormData({ ...formData, [id]: value });
     };
 
     const validatePassword = (password) => {
@@ -44,10 +45,10 @@ const Register = () => {
         }
 
         try {
-            const response = await axios.post("https://localhost:7254/api/Auth/Register", {
+            const response = await axios.post("https://localhost:7071/api/Auth/Register", {
                 Username: formData.Username,
                 Password: formData.Password,
-                Roles: [] 
+                Roles: ["User"]  // Hardcoded to "User" role
             });
 
             if (response.status === 200) {

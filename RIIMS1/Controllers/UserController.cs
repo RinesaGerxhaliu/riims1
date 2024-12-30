@@ -26,7 +26,7 @@ namespace RIIMSAPI.Controllers
             return Ok(usersList);
         }
 
-        [HttpGet("{id:string}")]
+       /* [HttpGet("{id:string}")]
         public async Task<IActionResult> GetById([FromRoute] string id)
         {
             var userDTO = await _userService.GetByIdAsync(id);
@@ -58,5 +58,6 @@ namespace RIIMSAPI.Controllers
             }
             return Ok(deletedUser);
         }
+       */
     }
 }

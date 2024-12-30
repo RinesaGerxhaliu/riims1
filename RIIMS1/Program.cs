@@ -19,14 +19,15 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder =>
     {
-        builder.WithOrigins("http://localhost:3000")
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials();
+        options.AddPolicy("AllowAll",
+        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+        builder.WithOrigins("http://localhost:3000") 
+               .AllowAnyMethod()  
+               .AllowAnyHeader()  
+               .AllowCredentials();  
     });
 });
 
-// Add services to the DI container
 
 builder.Services.AddDbContext<RiimsDbContext>(options =>
     options.UseSqlServer(
@@ -117,6 +118,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("CorsPolicy");
 app.UseAuthorization();
 app.MapControllers();
 

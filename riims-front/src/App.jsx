@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
+//import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import {jwtDecode} from "jwt-decode";
 import Login from './features/auth/login';
 import Register from './features/auth/register';
 import Footer from "./components/layout/footer";
 import LoggedInNavbar from "./components/layout/LoggedInNavbar";
-
+import Home from './features/Home/homepage.jsx';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
-  // Check if the token is expired
   const isTokenExpired = (token) => {
     if (!token) return true;
     try {
@@ -59,7 +59,7 @@ function App() {
       <Routes>
         {isLoggedIn ? (
           <>
-            {/* <Route
+            <Route
               path="/"
               element={
                 <>
@@ -71,7 +71,7 @@ function App() {
                 </>
               }
             />
-            <Route
+            {/* <Route
               path="/edit-profile"
               element={
                 <>
@@ -440,7 +440,6 @@ function App() {
           </>
         )}
       </Routes>
-
     </div>
   </Router>
   );
