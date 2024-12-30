@@ -5,6 +5,7 @@ using RIIMS.Application.DTOs.AftesiteDTOs;
 using RIIMS.Application.DTOs.UserGjuhetDTOs;
 using RIIMS.Application.Interfaces;
 using RIIMS.Application.Services;
+using System.Security.Claims;
 
 namespace RIIMSAPI.Controllers
 {
@@ -19,10 +20,15 @@ namespace RIIMSAPI.Controllers
             _userGjuhetService = userGjuhetService;
         }
 
-       /* [HttpGet]
+       [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            //string userId = 1;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
 
             var userGjuhetList = await _userGjuhetService.GetAllAsync(userId);
             return Ok(userGjuhetList);
@@ -42,7 +48,12 @@ namespace RIIMSAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddUserGjuhetRequestDTO add)
         {
-            //string userId = 1;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
 
             var result = await _userGjuhetService.CreateAsync(userId, add);
 
@@ -58,7 +69,7 @@ namespace RIIMSAPI.Controllers
                 return NotFound();
             }
             return Ok(updatedUserGjuhet);
-        }*/
+        }
 
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)

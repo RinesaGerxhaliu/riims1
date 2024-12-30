@@ -18,11 +18,16 @@ namespace RIIMSAPI.Controllers
             _aftesiaService = aftesiaService;
         }
 
-        /*// GET ALL AFTESITE 
+        // GET ALL AFTESITE 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            int userId = 1;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
 
             var aftesiteList = await _aftesiaService.GetAllAsync(userId);
             return Ok(aftesiteList);
@@ -44,12 +49,17 @@ namespace RIIMSAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddAftesiaRequestDTO addAftesite)
         {
-            string userId = 1;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
 
             var result = await _aftesiaService.CreateAsync(userId, addAftesite);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }*/
+        }
 
         // UPDATE AFTESIA BY ID
         [HttpPut("{id:guid}")]

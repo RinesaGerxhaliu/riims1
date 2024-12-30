@@ -1,13 +1,14 @@
-﻿namespace RIIMS.Domain.Entities
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace RIIMS.Domain.Entities
 {
-    public class User
+    public class User : IdentityUser
     {
-        public string Id { get; set; }
         public string emri { get; set; } = "";
 
         public string mbiemri { get; set; } = "";
 
-        public string? adresa { get; set; } = "";
+        public string? Adresa { get; set; } = "";
 
         public string? gjinia { get; set; } = "";
 

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RIIMS.Application.DTOs.LicensatDTOs;
 using RIIMS.Application.DTOs.SpecializimiDTOs;
 using RIIMS.Application.Interfaces;
+using System.Security.Claims;
 
 namespace RIIMSAPI.Controllers
 {
@@ -17,10 +18,15 @@ namespace RIIMSAPI.Controllers
             _licensaService = licensaService;
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            int userId = 1;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
 
             var licensatList = await _licensaService.GetAllAsync(userId);
             return Ok(licensatList);
@@ -41,12 +47,17 @@ namespace RIIMSAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddLicensatRequestDto addLicensa)
         {
-            int userId = 1;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
 
             var result = await _licensaService.CreateAsync(userId, addLicensa);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }*/
+        }
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateLicensatRequestDto update)

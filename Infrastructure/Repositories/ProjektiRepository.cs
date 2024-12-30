@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIIMS.Domain.Entities;
 using RIIMS.Domain.Interfaces;
-using RIIMSAPI.Infrastructure;
+using RIIMS.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

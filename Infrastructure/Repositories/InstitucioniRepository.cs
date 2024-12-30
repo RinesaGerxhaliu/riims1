@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIIMS.Domain.Entities;
 using RIIMSAPI.Domain.Interfaces;
-using RIIMSAPI.Infrastructure;
+using RIIMS.Infrastructure;
 
 namespace Infrastructure.Repositories
 {

@@ -7,7 +7,7 @@ using RIIMS.Application.Interfaces;
 
 namespace RIIMSAPI.Controllers
 {
-    /*[Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -22,41 +22,41 @@ namespace RIIMSAPI.Controllers
         public async Task<IActionResult> GetAll()
         {
            
-            var aftesiteList = await _userService.GetAllAsync();
-            return Ok(aftesiteList);
+            var usersList = await _userService.GetAllAsync();
+            return Ok(usersList);
         }
 
         [HttpGet("{id:string}")]
         public async Task<IActionResult> GetById([FromRoute] string id)
         {
-            var aftesiteDTO = await _userService.GetByIdAsync(id);
-            if (aftesiteDTO == null)
+            var userDTO = await _userService.GetByIdAsync(id);
+            if (userDTO == null)
             {
                 return NotFound();
             }
-            return Ok(aftesiteDTO);
+            return Ok(userDTO);
         }
 
         [HttpPut("{id:string}")]
         public async Task<IActionResult> Update([FromRoute] string id, [FromBody] UpdateUserRequestDTO updateUser)
         {
-            var updatedAftesia = await _userService.UpdateAsync(id, updateUser);
-            if (updatedAftesia == null)
+            var updatedUser = await _userService.UpdateAsync(id, updateUser);
+            if (updatedUser == null)
             {
                 return NotFound();
             }
-            return Ok(updatedAftesia);
+            return Ok(updatedUser);
         }
 
         [HttpDelete("{id:string}")]
         public async Task<IActionResult> Delete([FromRoute] string id)
         {
-            var deletedAftesia = await _userService.DeleteAsync(id);
-            if (deletedAftesia == null)
+            var deletedUser = await _userService.DeleteAsync(id);
+            if (deletedUser == null)
             {
                 return NotFound();
             }
-            return Ok(deletedAftesia);
+            return Ok(deletedUser);
         }
-    }*/
+    }
 }

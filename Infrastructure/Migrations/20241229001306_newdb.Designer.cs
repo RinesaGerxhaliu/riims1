@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RIIMSAPI.Infrastructure;
+using RIIMS.Infrastructure;
 
 #nullable disable
 
-namespace RIIMSAPI.Migrations
+namespace RIIMS.Infrastructure.Migrations
 {
     [DbContext(typeof(RiimsDbContext))]
     [Migration("20241229001306_newdb")]

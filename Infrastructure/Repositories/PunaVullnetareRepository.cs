@@ -2,7 +2,7 @@
 using RIIMS.Domain.Entities;
 using RIIMS.Domain.Interfaces;
 using RIIMSAPI.Domain.Interfaces;
-using RIIMSAPI.Infrastructure;
+using RIIMS.Infrastructure;
 
 
 namespace RIIMS.Infrastructure.Repositories

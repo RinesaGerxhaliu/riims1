@@ -18,60 +18,56 @@ namespace RIIMSAPI.Controllers
             _departmentiService = departmentiService;
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            int userId = 1;
-
-            var aftesiteList = await _departmentiService.GetAllAsync();
-            return Ok(aftesiteList);
+            var departamentetList = await _departmentiService.GetAllAsync();
+            return Ok(departamentetList);
         }
 
         // GET AFTESIA BY ID
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            var aftesiteDTO = await _departmentiService.GetByIdAsync(id);
-            if (aftesiteDTO == null)
+            var departamentiDTO = await _departmentiService.GetByIdAsync(id);
+            if (departamentiDTO == null)
             {
                 return NotFound();
             }
-            return Ok(aftesiteDTO);
+            return Ok(departamentiDTO);
         }
 
         // CREATE AFTESIA
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddDepartamentiRequestDto addDepartamenti)
         {
-            int userId = 1;
-
             var result = await _departmentiService.CreateAsync(addDepartamenti);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }*/
+        }
 
         // UPDATE AFTESIA BY ID
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateDepartamentiRequestDto updateDepartamenti)
         {
-            var updatedAftesia = await _departmentiService.UpdateAsync(id, updateDepartamenti);
-            if (updatedAftesia == null)
+            var updatedDepartamenti = await _departmentiService.UpdateAsync(id, updateDepartamenti);
+            if (updatedDepartamenti == null)
             {
                 return NotFound();
             }
-            return Ok(updatedAftesia);
+            return Ok(updatedDepartamenti);
         }
 
         // DELETE AFTESIA
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            var deletedAftesia = await _departmentiService.DeleteAsync(id);
-            if (deletedAftesia == null)
+            var deletedDepartamenti = await _departmentiService.DeleteAsync(id);
+            if (deletedDepartamenti == null)
             {
                 return NotFound();
             }
-            return Ok(deletedAftesia);
+            return Ok(deletedDepartamenti);
         }
     }
 }

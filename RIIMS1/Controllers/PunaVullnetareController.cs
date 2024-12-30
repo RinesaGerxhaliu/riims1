@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RIIMS.Application.DTOs.AftesiteDTOs;
 using RIIMS.Application.DTOs.PunaVullnetareDTOs;
 using RIIMS.Application.Interfaces;
+using System.Security.Claims;
 
 namespace RIIMSAPI.Controllers
 {
@@ -18,56 +19,66 @@ namespace RIIMSAPI.Controllers
             _punaVullnetareService = punaVullnetareService;
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            int userId = 3;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var aftesiteList = await _punaVullnetareService.GetAllAsync(userId);
-            return Ok(aftesiteList);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
+
+            var punetList = await _punaVullnetareService.GetAllAsync(userId);
+            return Ok(punetList);
         }
 
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            var aftesiteDTO = await _punaVullnetareService.GetByIdAsync(id);
-            if (aftesiteDTO == null)
+            var punaDTO = await _punaVullnetareService.GetByIdAsync(id);
+            if (punaDTO == null)
             {
                 return NotFound();
             }
-            return Ok(aftesiteDTO);
+            return Ok(punaDTO);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddPunaVullnetareRequestDTO addpunaVullnetareRequestDTO)
         {
-            int userId = 3;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
 
             var result = await _punaVullnetareService.CreateAsync(userId, addpunaVullnetareRequestDTO);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }*/
+        }
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdatePunaVullnetareRequestDTO updatePunaVullnetare)
         {
-            var updatedAftesia = await _punaVullnetareService.UpdateAsync(id, updatePunaVullnetare);
-            if (updatedAftesia == null)
+            var updatedPuna = await _punaVullnetareService.UpdateAsync(id, updatePunaVullnetare);
+            if (updatedPuna == null)
             {
                 return NotFound();
             }
-            return Ok(updatedAftesia);
+            return Ok(updatedPuna);
         }
 
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            var deletedAftesia = await _punaVullnetareService.DeleteAsync(id);
-            if (deletedAftesia == null)
+            var deletedPuna = await _punaVullnetareService.DeleteAsync(id);
+            if (deletedPuna == null)
             {
                 return NotFound();
             }
-            return Ok(deletedAftesia);
+            return Ok(deletedPuna);
         }
     }
 }

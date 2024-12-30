@@ -46,7 +46,7 @@ namespace RIIMS.Application.Services
         // UPDATE USER BY ID
         public async Task<UserDTO?> UpdateAsync(string id, UpdateUserRequestDTO updateUser)
         {
-            var institution = await EnsureInstitutionExistsAsync(updateUser.NiveliAkademik);
+            var institution = await EnsureNiveliExistsAsync(updateUser.NiveliAkademik);
 
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null) return null;
@@ -65,8 +65,8 @@ namespace RIIMS.Application.Services
             return _mapper.Map<UserDTO>(deletedUser);
         }
 
-        // ENSURE INSTITUTION EXISTS
-        private async Task<NiveliAkademik> EnsureInstitutionExistsAsync(string level)
+        // ENSURE NIVELI EXISTS
+        private async Task<NiveliAkademik> EnsureNiveliExistsAsync(string level)
         {
             var institution = await _niveliAkademikRepository.GetByNameAsync(level);
             if (institution == null)
@@ -82,10 +82,10 @@ namespace RIIMS.Application.Services
         }
 
         // EXTRACT USER ID FROM HTTP CONTEXT
-        public int? GetUserIdFromContext(HttpContext context)
+        /*public int? GetUserIdFromContext(HttpContext context)
         {
             var userIdClaim = context.User?.FindFirst(ClaimTypes.NameIdentifier);
             return userIdClaim != null ? Convert.ToInt32(userIdClaim.Value) : (int?)null;
-        }
+        }*/
     }
 }

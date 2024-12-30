@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RIIMS.Application.DTOs.AftesiteDTOs;
 using RIIMS.Application.DTOs.SpecializimiDTOs;
 using RIIMS.Application.Interfaces;
+using System.Security.Claims;
 
 namespace RIIMSAPI.Controllers
 {
@@ -18,58 +19,68 @@ namespace RIIMSAPI.Controllers
             _specializimiService = specializimiService;
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            int userId = 3;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var aftesiteList = await _specializimiService.GetAllAsync(userId);
-            return Ok(aftesiteList);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
+
+            var specializimetList = await _specializimiService.GetAllAsync(userId);
+            return Ok(specializimetList);
         }
 
 
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            var aftesiteDTO = await _specializimiService.GetByIdAsync(id);
-            if (aftesiteDTO == null)
+            var specializimiDTO = await _specializimiService.GetByIdAsync(id);
+            if (specializimiDTO == null)
             {
                 return NotFound();
             }
-            return Ok(aftesiteDTO);
+            return Ok(specializimiDTO);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddSpecializimetRequestDTO addSpecializimet)
         {
-            int userId = 3;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
 
             var result = await _specializimiService.CreateAsync(userId, addSpecializimet);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }*/
+        }
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateSpecializimetRequestDTO updateSpecializimet)
         {
-            var updatedAftesia = await _specializimiService.UpdateAsync(id, updateSpecializimet);
-            if (updatedAftesia == null)
+            var updatedSpecializimi = await _specializimiService.UpdateAsync(id, updateSpecializimet);
+            if (updatedSpecializimi == null)
             {
                 return NotFound();
             }
-            return Ok(updatedAftesia);
+            return Ok(updatedSpecializimi);
         }
 
         // DELETE AFTESIA
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            var deletedAftesia = await _specializimiService.DeleteAsync(id);
-            if (deletedAftesia == null)
+            var deletedSpecializimi = await _specializimiService.DeleteAsync(id);
+            if (deletedSpecializimi == null)
             {
                 return NotFound();
             }
-            return Ok(deletedAftesia);
+            return Ok(deletedSpecializimi);
         }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace RIIMSAPI.Migrations
+namespace RIIMS.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class newdb : Migration

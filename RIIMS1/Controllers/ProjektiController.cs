@@ -4,6 +4,7 @@ using RIIMS.Application.DTOs.LicensatDTOs;
 using RIIMS.Application.DTOs.ProjektiDTOs;
 using RIIMS.Application.Interfaces;
 using RIIMS.Application.Services;
+using System.Security.Claims;
 
 namespace RIIMSAPI.Controllers
 {
@@ -18,10 +19,15 @@ namespace RIIMSAPI.Controllers
             _projektiService = projektiService;
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            int userId = 1;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
 
             var projektiList = await _projektiService.GetAllAsync(userId);
             return Ok(projektiList);
@@ -41,12 +47,17 @@ namespace RIIMSAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddProjektiRequestDto add)
         {
-            int userId = 1;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
 
             var result = await _projektiService.CreateAsync(userId, add);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }*/
+        }
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateProjektiRequestDto update)

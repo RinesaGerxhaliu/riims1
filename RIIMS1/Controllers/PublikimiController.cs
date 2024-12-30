@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RIIMS.Application.DTOs.AftesiteDTOs;
 using RIIMS.Application.DTOs.PublikimiDTOs;
 using RIIMS.Application.Interfaces;
+using System.Security.Claims;
 
 namespace RIIMSAPI.Controllers
 {
@@ -18,56 +19,66 @@ namespace RIIMSAPI.Controllers
             _publikimiService = publikimiService;
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            int userId = 3;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var aftesiteList = await _publikimiService.GetAllAsync(userId);
-            return Ok(aftesiteList);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
+
+            var publikimiList = await _publikimiService.GetAllAsync(userId);
+            return Ok(publikimiList);
         }
 
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            var aftesiteDTO = await _publikimiService.GetByIdAsync(id);
-            if (aftesiteDTO == null)
+            var publikimiDTO = await _publikimiService.GetByIdAsync(id);
+            if (publikimiDTO == null)
             {
                 return NotFound();
             }
-            return Ok(aftesiteDTO);
+            return Ok(publikimiDTO);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddPublikimiRequestDTO addPublikimi)
         {
-            int userId = 3;
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User ID not found in the token.");
+            }
 
             var result = await _publikimiService.CreateAsync(userId, addPublikimi);
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }*/
+        }
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdatePublikimiRequestDTO updatePublikimi)
         {
-            var updatedAftesia = await _publikimiService.UpdateAsync(id, updatePublikimi);
-            if (updatedAftesia == null)
+            var updatedPublikimi = await _publikimiService.UpdateAsync(id, updatePublikimi);
+            if (updatedPublikimi == null)
             {
                 return NotFound();
             }
-            return Ok(updatedAftesia);
+            return Ok(updatedPublikimi);
         }
 
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            var deletedAftesia = await _publikimiService.DeleteAsync(id);
-            if (deletedAftesia == null)
+            var deletedPublikimi = await _publikimiService.DeleteAsync(id);
+            if (deletedPublikimi == null)
             {
                 return NotFound();
             }
-            return Ok(deletedAftesia);
+            return Ok(deletedPublikimi);
         }
     }
 }

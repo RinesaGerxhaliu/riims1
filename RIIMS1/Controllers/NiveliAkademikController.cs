@@ -21,19 +21,19 @@ namespace RIIMSAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var institucioniList = await _niveliAkademikService.GetAllAsync();
-            return Ok(institucioniList);
+            var niveliList = await _niveliAkademikService.GetAllAsync();
+            return Ok(niveliList);
         }
 
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            var institucioniDTO = await _niveliAkademikService.GetByIdAsync(id);
-            if (institucioniDTO == null)
+            var niveliDTO = await _niveliAkademikService.GetByIdAsync(id);
+            if (niveliDTO == null)
             {
                 return NotFound();
             }
-            return Ok(institucioniDTO);
+            return Ok(niveliDTO);
         }
 
         [HttpPost]
@@ -47,23 +47,23 @@ namespace RIIMSAPI.Controllers
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateNiveliAkademikRequestDto updateNiveliAkademik)
         {
-            var updatedInstitucioni = await _niveliAkademikService.UpdateAsync(id, updateNiveliAkademik);
-            if (updatedInstitucioni == null)
+            var updatedNiveli = await _niveliAkademikService.UpdateAsync(id, updateNiveliAkademik);
+            if (updatedNiveli == null)
             {
                 return NotFound();
             }
-            return Ok(updatedInstitucioni);
+            return Ok(updatedNiveli);
         }
 
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            var deletedInstitucioni = await _niveliAkademikService.DeleteAsync(id);
-            if (deletedInstitucioni == null)
+            var deletedNiveli = await _niveliAkademikService.DeleteAsync(id);
+            if (deletedNiveli == null)
             {
                 return NotFound();
             }
-            return Ok(deletedInstitucioni);
+            return Ok(deletedNiveli);
         }
     }
 }

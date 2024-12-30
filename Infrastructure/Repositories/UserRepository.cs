@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIIMS.Domain.Entities;
 using RIIMS.Domain.Interfaces;
-using RIIMSAPI.Infrastructure;
+using RIIMS.Infrastructure;
 
 namespace RIIMS.Infrastructure.Repositories
 {
@@ -61,7 +61,7 @@ namespace RIIMS.Infrastructure.Repositories
 
             existingUser.emri = user.emri;
             existingUser.mbiemri = user.mbiemri;
-            existingUser.adresa = user.adresa;
+            existingUser.Adresa = user.Adresa;
             existingUser.gjinia = user.gjinia;
             existingUser.dataELindjes = user.dataELindjes;
             existingUser.numriTelefonit = user.numriTelefonit;

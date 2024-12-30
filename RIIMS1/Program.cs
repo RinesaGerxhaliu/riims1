@@ -4,10 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using RIIMS.Application.Services;
 using RIIMS.Domain.Interfaces;
 using RIIMSAPI.Domain.Interfaces;
-using RIIMSAPI.Infrastructure;
+using RIIMS.Infrastructure;
 using RIIMS.Infrastructure.Repositories;
 using RIIMS.Application.Interfaces;
 using RIIMS.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +31,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<RiimsDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("RiimsConnectionString"),
-        sqlOptions => sqlOptions.MigrationsAssembly("RIIMSAPI") // Specify the migrations assembly here
+        sqlOptions => sqlOptions.MigrationsAssembly("RIIMS.Infrastructure") // Specify the migrations assembly here
     ));
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -47,6 +51,7 @@ builder.Services.AddScoped<IMbikqyresITemaveService, MbikqyresITemaveService>();
 builder.Services.AddScoped<INiveliGjuhesorService, NiveliGjuhesorService>();
 builder.Services.AddScoped<IGjuhetService, GjuhetService>();
 builder.Services.AddScoped<IUserGjuhetService, UserGjuhetService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 // Infrastructure Repositories
 builder.Services.AddScoped<IAftesiaRepository, AftesiaRepository>();
@@ -64,7 +69,37 @@ builder.Services.AddScoped<INiveliGjuhesorRepository, NiveliGjuhesorRepository>(
 builder.Services.AddScoped<IGjuhetRepository, GjuhetRepository>();
 builder.Services.AddScoped<IUserGjuhetRepository, UserGjuhetRepository>();
 
+builder.Services.AddIdentityCore<User>()
+    .AddRoles<IdentityRole>()
+    .AddTokenProvider<DataProtectorTokenProvider<User>>("Riims")
+    .AddEntityFrameworkStores<RiimsDbContext>()
+    .AddDefaultTokenProviders();
 
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 1;
+});
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    });
 
 
 // Add controllers and API-specific configurations
