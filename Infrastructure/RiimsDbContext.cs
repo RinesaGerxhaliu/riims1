@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using RIIMS.Domain.Entities;
 namespace RIIMS.Infrastructure
 
@@ -26,6 +27,12 @@ namespace RIIMS.Infrastructure
         public DbSet<NiveliAkademik> NiveliAkademik { get; set; }
         public DbSet<NiveliGjuhesor> NiveliGjuhesor { get; set; }
         public DbSet<UserGjuhet> UserGjuhet { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder
+                .ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+        }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,9 +56,11 @@ namespace RIIMS.Infrastructure
                 }
 
             };
+         
 
-            //Seed institucionet into the database
-            modelBuilder.Entity<Institucioni>().HasData(institucionet);
+
+        //Seed institucionet into the database
+        modelBuilder.Entity<Institucioni>().HasData(institucionet);
 
 
             //Seed data for NiveliAkademik
