@@ -86,13 +86,6 @@ namespace RIIMS.Application.Services
             }
             return institution;
         }
-
-        // EXTRACT USER ID FROM HTTPCONTEXT
-        public string? GetUserIdFromContext(HttpContext context)
-        {
-            var userIdClaim = context.User?.FindFirst(ClaimTypes.NameIdentifier);
-            return userIdClaim?.Value;
-        }
     }
 }
 

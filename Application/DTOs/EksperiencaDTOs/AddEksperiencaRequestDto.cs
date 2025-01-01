@@ -1,6 +1,6 @@
 ﻿namespace RIIMS.Application.DTOs.EksperiencaDTOs
 {
-    public class AddEksperiencaRequestDto
+    public class AddEksperiencaRequestDTO
     {
         public string Titulli { get; set; }
 

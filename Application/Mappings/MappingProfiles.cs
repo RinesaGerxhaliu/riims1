@@ -26,8 +26,8 @@ namespace RIIMS.Application.Mappings
         {
             //Eksperienca
             CreateMap<Eksperienca, EksperiencaDTO>();
-            CreateMap<AddEksperiencaRequestDto, Eksperienca>();
-            CreateMap<UpdateEksperiencaRequestDto, Eksperienca>();
+            CreateMap<AddEksperiencaRequestDTO, Eksperienca>();
+            CreateMap<UpdateEksperiencaRequestDTO, Eksperienca>();
             CreateMap<Eksperienca, EksperiencaDTO>()
            .ForMember(dest => dest.EmriInstitucionit, opt => opt.MapFrom(src => src.Institucioni.Emri));
 

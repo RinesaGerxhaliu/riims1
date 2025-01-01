@@ -1,4 +1,4 @@
-﻿namespace RIIMS.Application.DTOs.EdukimiDTOs
+﻿namespace RIIMS.Application.DTOs.EksperiencaDTOs
 {
     public class EksperiencaDTO
     {

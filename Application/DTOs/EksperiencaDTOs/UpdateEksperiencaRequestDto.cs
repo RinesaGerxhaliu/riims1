@@ -1,6 +1,6 @@
-﻿namespace RIIMS.Application.DTOs.EdukimiDTOs
+﻿namespace RIIMS.Application.DTOs.EksperiencaDTOs
 {
-    public class UpdateEksperiencaRequestDto
+    public class UpdateEksperiencaRequestDTO
     {
         public string Titulli { get; set; }
 

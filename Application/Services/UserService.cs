@@ -68,24 +68,17 @@ namespace RIIMS.Application.Services
         // ENSURE NIVELI EXISTS
         private async Task<NiveliAkademik> EnsureNiveliExistsAsync(string level)
         {
-            var institution = await _niveliAkademikRepository.GetByNameAsync(level);
-            if (institution == null)
+            var niveli = await _niveliAkademikRepository.GetByNameAsync(level);
+            if (niveli == null)
             {
-                institution = new NiveliAkademik
+                niveli = new NiveliAkademik
                 {
                     Id = Guid.NewGuid(),
                     lvl = level
                 };
-                institution = await _niveliAkademikRepository.CreateAsync(institution);
+                niveli = await _niveliAkademikRepository.CreateAsync(niveli);
             }
-            return institution;
+            return niveli;
         }
-
-        // EXTRACT USER ID FROM HTTP CONTEXT
-        /*public int? GetUserIdFromContext(HttpContext context)
-        {
-            var userIdClaim = context.User?.FindFirst(ClaimTypes.NameIdentifier);
-            return userIdClaim != null ? Convert.ToInt32(userIdClaim.Value) : (int?)null;
-        }*/
     }
 }

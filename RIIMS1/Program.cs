@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +53,8 @@ builder.Services.AddScoped<IMbikqyresITemaveService, MbikqyresITemaveService>();
 builder.Services.AddScoped<INiveliGjuhesorService, NiveliGjuhesorService>();
 builder.Services.AddScoped<IGjuhetService, GjuhetService>();
 builder.Services.AddScoped<IUserGjuhetService, UserGjuhetService>();
+builder.Services.AddScoped<IEdukimiService, EdukimiService>();
+builder.Services.AddScoped<IEksperiencaService, EksperiencaService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
 // Infrastructure Repositories
@@ -68,6 +71,8 @@ builder.Services.AddScoped<IProjektiRepository, ProjektiRepository>();
 builder.Services.AddScoped<IMbikqyresITemaveRepository, MbikqyresITemaveRepository>();
 builder.Services.AddScoped<INiveliGjuhesorRepository, NiveliGjuhesorRepository>();
 builder.Services.AddScoped<IGjuhetRepository, GjuhetRepository>();
+builder.Services.AddScoped<IEdukimiRepository, EdukimiRepository>();
+builder.Services.AddScoped<IEksperiencaRepository, EksperiencaRepository>();
 builder.Services.AddScoped<IUserGjuhetRepository, UserGjuhetRepository>();
 
 builder.Services.AddIdentityCore<User>()
@@ -106,7 +111,36 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 // Add controllers and API-specific configurations
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Riims API", Version = "v1" });
+    options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = JwtBearerDefaults.AuthenticationScheme
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = JwtBearerDefaults.AuthenticationScheme
+                },
+                Scheme = "Oauth2",
+                Name = JwtBearerDefaults.AuthenticationScheme,
+                In = ParameterLocation.Header
+            },
+            new List<string>()
+        }
+    });
+});
 
 var app = builder.Build();
 
