@@ -5,6 +5,7 @@ using RIIMS.Application.DTOs.EdukimiDTOs;
 using RIIMS.Application.DTOs.EksperiencaDTOs;
 using RIIMS.Application.DTOs.GjuhaDTOs;
 using RIIMS.Application.DTOs.HonorsAndAwardsDTOs;
+using RIIMS.Application.DTOs.ImageDTOs;
 using RIIMS.Application.DTOs.InstitucioniDTOs;
 using RIIMS.Application.DTOs.LicensatDTOs;
 using RIIMS.Application.DTOs.MbikqyresITemaveDTOs;
@@ -166,6 +167,12 @@ namespace RIIMS.Application.Mappings
                 .ReverseMap();
 
             CreateMap<UpdateMbikqyresRequestDTO, MbikqyresITemave>()
+                .ReverseMap();
+
+            CreateMap<ImageUploadRequestDTO, Image>()
+                .ReverseMap();
+
+            CreateMap<ImageDTO, Image>()
                 .ReverseMap();
         }
     }

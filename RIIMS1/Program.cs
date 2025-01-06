@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,8 @@ builder.Services.AddCors(options =>
                .AllowCredentials();  
     });
 });
+
+builder.Services.AddHttpContextAccessor();
 
 
 builder.Services.AddDbContext<RiimsDbContext>(options =>
@@ -56,6 +59,7 @@ builder.Services.AddScoped<IUserGjuhetService, UserGjuhetService>();
 builder.Services.AddScoped<IEdukimiService, EdukimiService>();
 builder.Services.AddScoped<IEksperiencaService, EksperiencaService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IImageService, ImageService>();
 
 // Infrastructure Repositories
 builder.Services.AddScoped<IAftesiaRepository, AftesiaRepository>();
@@ -74,6 +78,11 @@ builder.Services.AddScoped<IGjuhetRepository, GjuhetRepository>();
 builder.Services.AddScoped<IEdukimiRepository, EdukimiRepository>();
 builder.Services.AddScoped<IEksperiencaRepository, EksperiencaRepository>();
 builder.Services.AddScoped<IUserGjuhetRepository, UserGjuhetRepository>();
+builder.Services.AddScoped<IImageRepository, ImageRepository>();
+
+//Infrastructure Services
+builder.Services.AddScoped<IFileStorageService, FileStorageService>();
+
 
 builder.Services.AddIdentityCore<User>()
     .AddRoles<IdentityRole>()
@@ -150,6 +159,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+    RequestPath = "/Images"
+
+});
 
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
