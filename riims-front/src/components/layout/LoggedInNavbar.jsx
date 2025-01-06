@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import RiimsLogo from '../../assets/images/riims-logo.png';

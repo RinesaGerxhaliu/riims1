@@ -62,33 +62,33 @@ function Homepage() {
       }));
 
       try {
-        const photoResponse = await axios.get(
-          "https://localhost:7254/api/Images/GetImageByUserId",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        const photoUrl = photoResponse.data.url || defaultImage;
+        // const photoResponse = await axios.get(
+        //   "https://localhost:7254/api/Images/GetImageByUserId",
+        //   {
+        //     headers: { Authorization: `Bearer ${token}` },
+        //   }
+        // );
+        // const photoUrl = photoResponse.data.url || defaultImage;
 
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          foto: photoUrl,
-        }));
+        // setFormData((prevFormData) => ({
+        //   ...prevFormData,
+        //   foto: photoUrl,
+        // }));
       } catch (photoError) {
         if (photoError.response && photoError.response.status === 404) {
-          console.log("No image found for the user. Using default image.");
+          //console.log("No image found for the user. Using default image.");
           setFormData((prevFormData) => ({
             ...prevFormData,
             foto: defaultImage,
           }));
         } else {
-          console.error("Error fetching photo data:", photoError);
-          alert("Error fetching photo data. Please try again.");
+          //console.error("Error fetching photo data:", photoError);
+          //alert("Error fetching photo data. Please try again.");
         }
       }
     } catch (error) {
-      console.error("Error fetching profile data:", error);
-      alert("Error fetching profile data. Please try again.");
+     // console.error("Error fetching profile data:", error);
+     // alert("Error fetching profile data. Please try again.");
     }
   };
 
@@ -157,18 +157,18 @@ function Homepage() {
 
           <div className="col-md-4 mb-4">
             <div className="box text-center bg-white shadow p-3 d-flex flex-column justify-content-center align-items-center">
-              <Link to="/aftesite" className="d-block text-decoration-none">
-                <img
-                  src={lightning}
-                  alt="usertie"
-                  style={{ width: "85px", height: "auto" }}
-                />
-                <div className="box-content mt-3">
-                  <h4 className="fst-italic mb-3" style={{ color: "#244082" }}>
-                    Shto aftësi
-                  </h4>
-                </div>
-              </Link>
+            <Link to="/addAftesia" className="d-block text-decoration-none">
+  <img
+    src={lightning}
+    alt="usertie"
+    style={{ width: "85px", height: "auto" }}
+  />
+  <div className="box-content mt-3">
+    <h4 className="fst-italic mb-3" style={{ color: "#244082" }}>
+      Shto aftësi
+    </h4>
+  </div>
+</Link>
             </div>
           </div>
 

@@ -7,6 +7,9 @@ import Register from './features/auth/register';
 import Footer from "./components/layout/footer";
 import LoggedInNavbar from "./components/layout/LoggedInNavbar";
 import Home from './features/Home/homepage.jsx';
+import Aftesite from "./features/AftesiaCRUD/AddAftesia.jsx";
+import Publikimi from "./features/PublikimiCRUD/AddPublikimi.jsx";
+import Specializimet from "./features/SpecializimiCRUD/AddSpecializimi.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -71,6 +74,54 @@ function App() {
                 </>
               }
             />
+              <Route
+              path="/addAftesia"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <Aftesite />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+               <Route
+              path="/Home"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <Home />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+             <Route
+              path="/publikimi"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <Publikimi />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+              <Route
+              path="/specializimet"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <Specializimet />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
             {/* <Route
               path="/edit-profile"
               element={
@@ -90,30 +141,6 @@ function App() {
                   <LoggedInNavbar handleLogout={handleLogout} />
                   <div className="container mt-4">
                     <Eksperienca />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/aftesite"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <Aftesite />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/specializimet"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <Specializimet />
                   </div>
                   <Footer />
                 </>
@@ -174,18 +201,6 @@ function App() {
                   <LoggedInNavbar handleLogout={handleLogout} />
                   <div className="container mt-4">
                     <Edukimi />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/Home"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <Home />
                   </div>
                   <Footer />
                 </>
