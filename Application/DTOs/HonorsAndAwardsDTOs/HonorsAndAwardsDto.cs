@@ -1,6 +1,6 @@
 ﻿namespace RIIMS.Application.DTOs.HonorsAndAwardsDTOs
 {
-    public class HonorsAndAwardsDto
+    public class HonorsAndAwardsDTO
     {
         public Guid Id { get; set; }
 

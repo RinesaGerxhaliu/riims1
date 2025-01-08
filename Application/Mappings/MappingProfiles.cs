@@ -33,11 +33,11 @@ namespace RIIMS.Application.Mappings
            .ForMember(dest => dest.EmriInstitucionit, opt => opt.MapFrom(src => src.Institucioni.Emri));
 
             //HonorsAndAwards
-            CreateMap<HonorsAndAwards, HonorsAndAwardsDto>();
-            CreateMap<HonorsAndAwardsDto, HonorsAndAwards>();
-            CreateMap<AddHonorsAndAwardsRequestDto, HonorsAndAwards>();
-            CreateMap<UpdateHonorsAndAwardsRequestDto, HonorsAndAwards>();
-            CreateMap<HonorsAndAwards, HonorsAndAwardsDto>()
+            CreateMap<HonorsAndAwards, HonorsAndAwardsDTO>();
+            CreateMap<HonorsAndAwardsDTO, HonorsAndAwards>();
+            CreateMap<AddHonorsAndAwardsRequestDTO, HonorsAndAwards>();
+            CreateMap<UpdateHonorsAndAwardsRequestDTO, HonorsAndAwards>();
+            CreateMap<HonorsAndAwards, HonorsAndAwardsDTO>()
          .ForMember(dest => dest.EmriInstitucionit, opt => opt.MapFrom(src => src.Institucioni.Emri));
 
             //licensat

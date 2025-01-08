@@ -58,6 +58,7 @@ builder.Services.AddScoped<IGjuhetService, GjuhetService>();
 builder.Services.AddScoped<IUserGjuhetService, UserGjuhetService>();
 builder.Services.AddScoped<IEdukimiService, EdukimiService>();
 builder.Services.AddScoped<IEksperiencaService, EksperiencaService>();
+builder.Services.AddScoped<IHonorsAndAwardsService, HonorsAndAwardsService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IImageService, ImageService>();
 
@@ -77,6 +78,7 @@ builder.Services.AddScoped<INiveliGjuhesorRepository, NiveliGjuhesorRepository>(
 builder.Services.AddScoped<IGjuhetRepository, GjuhetRepository>();
 builder.Services.AddScoped<IEdukimiRepository, EdukimiRepository>();
 builder.Services.AddScoped<IEksperiencaRepository, EksperiencaRepository>();
+builder.Services.AddScoped<IHonorsAndAwardsRepository, HonorsAndAwardsRepository>();
 builder.Services.AddScoped<IUserGjuhetRepository, UserGjuhetRepository>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
 

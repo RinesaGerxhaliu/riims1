@@ -1,6 +1,6 @@
 ﻿namespace RIIMS.Application.DTOs.HonorsAndAwardsDTOs
 {
-    public class UpdateHonorsAndAwardsRequestDto
+    public class UpdateHonorsAndAwardsRequestDTO
     {
 
         public string titulli { get; set; }
