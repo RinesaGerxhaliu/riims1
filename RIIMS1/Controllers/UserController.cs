@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RIIMS.Application.DTOs.AftesiteDTOs;
 using RIIMS.Application.DTOs.UserDTOs;
 using RIIMS.Application.Interfaces;
+using System.Security.Claims;
 
 namespace RIIMSAPI.Controllers
 {
@@ -18,17 +19,24 @@ namespace RIIMSAPI.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
+        // Get all users
+        [HttpGet("all")]
         public async Task<IActionResult> GetAll()
         {
-           
             var usersList = await _userService.GetAllAsync();
             return Ok(usersList);
         }
 
-       /* [HttpGet("{id:string}")]
-        public async Task<IActionResult> GetById([FromRoute] string id)
+        // Get user by ID
+        [HttpGet("byid")]
+        public async Task<IActionResult> GetById()
         {
+            var id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(id))
+            {
+                return Unauthorized();
+            }
+
             var userDTO = await _userService.GetByIdAsync(id);
             if (userDTO == null)
             {
@@ -37,9 +45,16 @@ namespace RIIMSAPI.Controllers
             return Ok(userDTO);
         }
 
-        [HttpPut("{id:string}")]
-        public async Task<IActionResult> Update([FromRoute] string id, [FromBody] UpdateUserRequestDTO updateUser)
+        // Update user by ID
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateUserRequestDTO updateUser)
         {
+            var id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(id))
+            {
+                return Unauthorized();
+            }
+
             var updatedUser = await _userService.UpdateAsync(id, updateUser);
             if (updatedUser == null)
             {
@@ -48,7 +63,8 @@ namespace RIIMSAPI.Controllers
             return Ok(updatedUser);
         }
 
-        [HttpDelete("{id:string}")]
+        // Delete user by ID
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] string id)
         {
             var deletedUser = await _userService.DeleteAsync(id);
@@ -58,6 +74,5 @@ namespace RIIMSAPI.Controllers
             }
             return Ok(deletedUser);
         }
-       */
     }
 }
