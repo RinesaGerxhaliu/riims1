@@ -15,6 +15,10 @@ import HonorsAndAwards from "./features/HonorsAndAwardsCRUD/AddHonorsAndAwards.j
 import Projekti from "./features/ProjektiCRUD/AddProjekti.jsx";
 import Edukimi from "./features/EdukimiCRUD/AddEdukimi.jsx";
 import Eksperienca from "./features/EksperiencaCRUD/AddEksperienca.jsx";
+import Gjuhet from "./features/GjuhaCRUD/AddGjuha.jsx";
+import Licensat from "./features/LicensaCRUD/AddLicensa.jsx";
+import PunaVullnetare from "./features/PunaVullnetareCRUD/AddPunaVullnetare.jsx";
+import MbikqyresITemave from "./features/MbikqyresITemaveCRUD/AddMbikqyresITemave.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -187,18 +191,6 @@ function App() {
                 </>
               }
             />
-            {/* <Route
-              path="/edit-profile"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <EditProfile />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
             <Route
               path="/gjuhet"
               element={
@@ -242,6 +234,18 @@ function App() {
                   <LoggedInNavbar handleLogout={handleLogout} />
                   <div className="container mt-4">
                     <MbikqyresITemave />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            {/* <Route
+              path="/edit-profile"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditProfile />
                   </div>
                   <Footer />
                 </>
