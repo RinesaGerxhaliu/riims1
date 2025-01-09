@@ -10,6 +10,10 @@ import Home from './features/Home/homepage.jsx';
 import Aftesite from "./features/AftesiaCRUD/AddAftesia.jsx";
 import Publikimi from "./features/PublikimiCRUD/AddPublikimi.jsx";
 import Specializimet from "./features/SpecializimiCRUD/AddSpecializimi.jsx";
+import HonorsAndAwards from "./features/HonorsAndAwardsCRUD/AddHonorsAndAwards.jsx";
+import Projekti from "./features/ProjektiCRUD/AddProjekti.jsx";
+import Edukimi from "./features/EdukimiCRUD/AddEdukimi.jsx";
+import Eksperienca from "./features/EksperiencaCRUD/AddEksperienca.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -122,13 +126,37 @@ function App() {
                 </>
               }
             />
-            {/* <Route
-              path="/edit-profile"
+            <Route
+              path="/honorsandawards"
               element={
                 <>
                   <LoggedInNavbar handleLogout={handleLogout} />
                   <div className="container mt-4">
-                    <EditProfile />
+                    <HonorsAndAwards />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/projekti"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <Projekti />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/edukimi"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <Edukimi />
                   </div>
                   <Footer />
                 </>
@@ -141,6 +169,18 @@ function App() {
                   <LoggedInNavbar handleLogout={handleLogout} />
                   <div className="container mt-4">
                     <Eksperienca />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            {/* <Route
+              path="/edit-profile"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditProfile />
                   </div>
                   <Footer />
                 </>
@@ -171,48 +211,12 @@ function App() {
               }
             />
             <Route
-              path="/projekti"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <Projekti />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
               path="/punavullnetare"
               element={
                 <>
                   <LoggedInNavbar handleLogout={handleLogout} />
                   <div className="container mt-4">
                     <PunaVullnetare />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/edukimi"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <Edukimi />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/honorsandawards"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <HonorsAndAwards />
                   </div>
                   <Footer />
                 </>
