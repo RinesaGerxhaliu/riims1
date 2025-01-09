@@ -38,11 +38,13 @@
 }
 
 .user-photo {
-    max-width: 200px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
+    width: 200px;  
+    height: 200px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 3px solid #fff; 
+  }
+  
 .custom-btn-position {
     /* margin-left: auto; */
     display: block;

@@ -1,0 +1,144 @@
+.total-users-card,
+.welcome-admin-card {
+  background: linear-gradient(135deg, #4b79a1, #283e51);
+  color: white;
+  border-radius: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.animated-card:hover {
+  transform: translateY(-10px);
+}
+
+.icon-background {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 50%;
+}
+
+.dashboard-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.table-dark {
+  background-color: #2c3e50;
+  color: #ffffff;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.shadow-lg {
+  box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2) !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.welcome-admin-card {
+  background: linear-gradient(135deg, #4b79a1, #283e51);
+  color: white;
+  border-radius: 20px;
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+}
+
+.welcome-admin-text {
+  /* font-family: 'Roboto', sans-serif; */
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 43px;
+  margin-top: 20px;
+}
+
+.animated-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animated-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.total-users-card {
+  background-color: #007bff; 
+}
+
+.total-users-card .icon-background {
+  background-color: #0056b3;
+}
+
+.manage-institucionet-card {
+  background-color: #164d3f; 
+}
+
+.manage-institucionet-card .icon-background {
+  background-color: #2c6263; 
+}
+
+.manage-institucionet-title {
+  color: #ffffff; 
+}
+
+.manage-languages-card {
+  background-color: #164d3f; 
+}
+
+.manage-languages-card .icon-background {
+  background-color: #1f7474; 
+}
+
+.manage-languages-title {
+  color: #ffffff; 
+}
+.manage-departamentet-card {
+  background-color: #0a2b2c; 
+}
+
+.manage-departamentet-card .icon-background {
+  background-color: #1f7474; 
+}
+
+.manage-departamentet-title {
+  color: #ffffff; 
+}
+.btn-dark-green {
+  background-color: #2c5b5c; 
+  border-color: #205051; 
+  color: white; 
+}
+
+.btn-dark-green:hover {
+  background-color: #276936; 
+  border-color: #276936;
+}
+
+.btn-dark-bluee {
+  background-color: #1b4f39; 
+  border-color: #194528;
+  color: white; 
+}
+
+.btn-dark-bluee:hover {
+  background-color: #2a372d;
+  border-color: #276936;
+}
+

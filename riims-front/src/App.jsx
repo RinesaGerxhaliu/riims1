@@ -19,6 +19,9 @@ import Gjuhet from "./features/GjuhaCRUD/AddGjuha.jsx";
 import Licensat from "./features/LicensaCRUD/AddLicensa.jsx";
 import PunaVullnetare from "./features/PunaVullnetareCRUD/AddPunaVullnetare.jsx";
 import MbikqyresITemave from "./features/MbikqyresITemaveCRUD/AddMbikqyresITemave.jsx";
+import Dashboard from "./components/dashboard/dashboard.jsx";
+import EditProfile from "./features/profile/EditProfile.jsx";
+import ManageLanguages from "./features/GjuhetCRUD/ManageLanguages.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -239,7 +242,19 @@ function App() {
                 </>
               }
             />
-            {/* <Route
+             <Route
+              path="/dashboard"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <Dashboard />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
               path="/edit-profile"
               element={
                 <>
@@ -251,6 +266,19 @@ function App() {
                 </>
               }
             />
+              <Route
+              path="/manage-languages"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <ManageLanguages />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            {/* 
             <Route
               path="/publikimi"
               element={
@@ -429,17 +457,6 @@ function App() {
                 <Footer />
               </>
             } />
-            <Route
-              path="/dashboard"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <Dashboard />
-                  </div>
-                  <Footer />
-                </>
-              }
             />
             <Route
               path="/manage-languages"
