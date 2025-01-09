@@ -34,7 +34,7 @@ function LoggedInNavbar({ handleLogout }) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/edit-profile">Edit Profile</Nav.Link>
-            <Nav.Link as={Link} to="/personDetails">CV Details</Nav.Link>
+            <Nav.Link as={Link} to="/PersonDetails">CV Details</Nav.Link>
             <Nav.Link as={Link} to="/Home">Home</Nav.Link>
           </Nav>
           {isAdmin() && (

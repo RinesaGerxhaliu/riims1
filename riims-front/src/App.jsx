@@ -7,6 +7,7 @@ import Register from './features/auth/register';
 import Footer from "./components/layout/footer";
 import LoggedInNavbar from "./components/layout/LoggedInNavbar";
 import Home from './features/Home/homepage.jsx';
+import PersonDetails from "./features/CVdetails/PersonDetails.jsx";
 import Aftesite from "./features/AftesiaCRUD/AddAftesia.jsx";
 import Publikimi from "./features/PublikimiCRUD/AddPublikimi.jsx";
 import Specializimet from "./features/SpecializimiCRUD/AddSpecializimi.jsx";
@@ -93,6 +94,18 @@ function App() {
                   <LoggedInNavbar handleLogout={handleLogout} />
                   <div className="container mt-4">
                     <Home />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/PersonDetails"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <PersonDetails />
                   </div>
                   <Footer />
                 </>

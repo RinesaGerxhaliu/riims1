@@ -47,7 +47,7 @@ function Homepage() {
   const fetchData = async () => {
     try {
       const profileResponse = await axios.get(
-        "https://localhost:7254/api/UserProfile/get-profile-by-id",
+        "https://localhost:7071/api/User/byid",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
