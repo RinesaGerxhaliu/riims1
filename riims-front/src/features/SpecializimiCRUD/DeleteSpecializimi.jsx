@@ -5,7 +5,7 @@ import "../../assets/styles/DeleteModals.css";
 // Function to delete Specializim by ID
 async function deleteSpecializimById(id) {
     try {
-        const response = await fetch(`https://localhost:7071/api/Specializimi/${id}`, {
+        const response = await fetch(`https://localhost:7071/api/Specializimet/${id}`, {
             method: 'DELETE'
         });
 

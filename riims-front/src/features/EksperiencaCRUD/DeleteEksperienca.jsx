@@ -4,7 +4,7 @@ import "../../assets/styles/DeleteModals.css";
 
 async function deleteEksperiencaById(id) {
     try {
-        const response = await fetch(`https://localhost:7254/api/Eksperienca/delete-eksperienca-by-id/${id}`, {
+        const response = await fetch(`https://localhost:7071/api/Eksperienca/${id}`, {
             method: 'DELETE'
         });
 

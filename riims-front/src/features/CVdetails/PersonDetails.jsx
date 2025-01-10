@@ -101,25 +101,25 @@ function PersonDetails() {
 
                 try {
                     const photoResponse = await axios.get("https://localhost:7071/api/Images/GetImageByUserId", {
-                      headers: { Authorization: `Bearer ${token}` },
+                        headers: { Authorization: `Bearer ${token}` },
                     });
                     const photoUrl = photoResponse.data.url || defaultImage;
                     setUserData((prevData) => ({
-                      ...prevData,
-                      foto: photoUrl,
-                    }));
-                  } catch (photoError) {
-                    if (photoError.response && photoError.response.status === 404) {
-                      console.log("No image found for the user. Using default image.");
-                      setUserData((prevData) => ({
                         ...prevData,
-                        foto: defaultImage,
-                      }));
+                        foto: photoUrl,
+                    }));
+                } catch (photoError) {
+                    if (photoError.response && photoError.response.status === 404) {
+                        console.log("No image found for the user. Using default image.");
+                        setUserData((prevData) => ({
+                            ...prevData,
+                            foto: defaultImage,
+                        }));
                     } else {
-                      console.error("Error fetching photo data:", photoError);
-                      alert("Error fetching photo data. Please try again.");
+                        console.error("Error fetching photo data:", photoError);
+                        alert("Error fetching photo data. Please try again.");
                     }
-                  }
+                }
 
                 const fetchData = async (url, setter) => {
                     try {
@@ -184,20 +184,20 @@ function PersonDetails() {
     if (error) {
         return <p>{error}</p>;
     }
-    
+
 
     return (
         <div className="container mt-4 mb-4">
-         <Col md={3} className="mx-auto mb-3">
-            <Card className="text-center shadow-lg animated-card view-cv-card mb-3 align-items-center">
-                <Card.Body className="p-4">
-                    <FaFileAlt size={60} className="mb-3 text-white icon-background " />
-                    <button className="btn btn-view-cv mt-3" onClick={handleViewCV}>
-                        <FaEye size={20} /> Generate your CV
-                    </button>
-                </Card.Body>
-            </Card>
-        </Col>
+            <Col md={3} className="mx-auto mb-3">
+                <Card className="text-center shadow-lg animated-card view-cv-card mb-3 align-items-center">
+                    <Card.Body className="p-4">
+                        <FaFileAlt size={60} className="mb-3 text-white icon-background " />
+                        <button className="btn btn-view-cv mt-3" onClick={handleViewCV}>
+                            <FaEye size={20} /> Generate your CV
+                        </button>
+                    </Card.Body>
+                </Card>
+            </Col>
 
             <div className="accordion" id="accordionDetails">
                 <div className="accordion-item">
@@ -356,31 +356,28 @@ function PersonDetails() {
                     </h2>
                     <div id="honorsAndAwardsCollapse" className="accordion-collapse collapse" aria-labelledby="honorsAndAwardsHeading" data-bs-parent="#accordion">
                         <div className="accordion-body">
-                            {licensat.map((license, index) => (
+                            {honorsAndAwards.map((honors, index) => (
                                 <div key={index} className="d-flex justify-content-between align-items-center mb-3">
-                                    <div className={`me-3 ${hiddenLicensat.includes(license.id) ? 'blurred' : ''}`}>
-                                        <p className="mb-0">Emri: {license.emri}</p>
-                                        <p className="mb-0">Emri Institucionit: {license.emriInstitucionit}</p>
-                                        <p className="mb-0">Data Leshimit: {new Date(license.dataLeshimit).toLocaleDateString()}</p>
-                                        {license.dataSkadimit && (
-                                            <p className="mb-0">Data Skadimit: {new Date(license.dataSkadimit).toLocaleDateString()}</p>
-                                        )}
-                                        {license.credentialId && <p className="mb-0">Credential ID: {license.credentialId}</p>}
-                                        {license.credentialUrl && <p className="mb-0">Credential URL: {license.credentialUrl}</p>}
+                                    <div className={`me-3 ${hiddenHonors.includes(honors.id) ? 'blurred' : ''}`}>
+                                        <p className="mb-0">Titulli: {honors.titulli}</p>
+                                        <p className="mb-0">Lëshuesi: {honors.issuer}</p>
+                                        <p className="mb-0">Emri Institucionit: {honors.emriInstitucionit}</p>
+                                        <p className="mb-0">Data Leshimit: {new Date(honors.dataEleshimit).toLocaleDateString()}</p>
+                                        {honors.pershkrimi && <p className="mb-0">Pershkrimi: {honors.pershkrimi}</p>}
                                     </div>
                                     <div>
-                                        <button className="btn btn-secondary me-2" onClick={() => toggleHideLicensat(license.id)}>
-                                            <i className={`bi ${hiddenLicensat.includes(license.id) ? 'bi-eye-slash' : 'bi-eye'}`}></i>
+                                        <button className="btn btn-secondary me-2" onClick={() => toggleHideHonors(honors.id)}>
+                                            <i className={`bi ${hiddenHonors.includes(honors.id) ? 'bi-eye-slash' : 'bi-eye'}`}></i>
                                         </button>
-                                        <Link to={`/EditLicensa/${license.id}`} className="btn custom-button custom-button-edit me-2">Edit</Link>
-                                        <button className="btn custom-button custom-button-delete" onClick={() => triggerLicensaDelete(license.id)}>Delete</button>
+                                        <Link to={`/EditHonorsAndAwards/${honors.id}`} className="btn custom-button custom-button-edit me-2">Edit</Link>
+                                        <button className="btn custom-button custom-button-delete" onClick={() => triggerHonorDelete(honors.id)}>Delete</button>
                                     </div>
                                 </div>
                             ))}
                         </div>
                         <HonorDeleteConfirmationModal />
                     </div>
-                </div> 
+                </div>
                 <div className="accordion-item">
                     <h2 className="accordion-header" id="licensatHeading">
                         <button className="accordion-button custom-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#licensatCollapse" aria-expanded="true" aria-controls="licensatCollapse">
@@ -459,7 +456,6 @@ function PersonDetails() {
                                         <p className="mb-0">Data e Fillimit: {new Date(projekt.startDate).toLocaleDateString()}</p>
                                         {projekt.endDate && <p className="mb-0">Data e Mbarimit: {new Date(projekt.endDate).toLocaleDateString()}</p>}
                                         {projekt.collaborators && <p className="mb-0">Bashkëpunëtorët: {projekt.collaborators}</p>}
-                                        <p className="mb-0">Asocohet: {projekt.asocohet}</p>
                                     </div>
                                     <div>
                                         <button className="btn btn-secondary me-2" onClick={() => toggleHideProjekti(projekt.id)}>

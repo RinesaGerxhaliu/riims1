@@ -22,6 +22,11 @@ import MbikqyresITemave from "./features/MbikqyresITemaveCRUD/AddMbikqyresITemav
 import Dashboard from "./components/dashboard/dashboard.jsx";
 import EditProfile from "./features/profile/EditProfile.jsx";
 import ManageLanguages from "./features/GjuhetCRUD/ManageLanguages.jsx";
+import EditAftesia from "./features/AftesiaCRUD/EditAftesia.jsx";
+import EditEdukimi from "./features/EdukimiCRUD/EditEdukimi.jsx";
+import EditEksperienca from "./features/EksperiencaCRUD/EditEksperienca.jsx";
+import EditGjuhet from "./features/GjuhaCRUD/EditGjuhet.jsx";
+import EditHonorsAndAwards from "./features/HonorsAndAwardsCRUD/EditHonorsAndAwards.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -273,6 +278,66 @@ function App() {
                   <LoggedInNavbar handleLogout={handleLogout} />
                   <div className="container mt-4">
                     <ManageLanguages />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/EditAftesia/:id"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditAftesia />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/EditEdukimi/:id"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditEdukimi />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/EditEksperienca/:id"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditEksperienca />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/EditGjuhet/:id"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditGjuhet />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/EditHonorsAndAwards/:id"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditHonorsAndAwards />
                   </div>
                   <Footer />
                 </>

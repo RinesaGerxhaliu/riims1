@@ -266,7 +266,7 @@ function Licensat() {
                     className="btn btn-primary"
                     style={{ width: "calc(50% - 0.7rem)" }}
                   >
-                    Shto
+                    Ruaj
                   </button>
                 </div>
               </div>

@@ -35,19 +35,8 @@
     border: none;
 }
 
-.custom-button-edit {
-    background-color: #007bff; 
-    color: #ffffff; 
-}
-
 .custom-button-edit:hover {
     background-color: #0056b3; 
-}
-
-
-.custom-button-delete {
-    background-color: #6c757d; 
-    color: #ffffff; 
 }
 
 .custom-button-delete:hover {
@@ -125,4 +114,13 @@
     background: rgba(0, 0, 0, 0.2); 
     border-radius: 50%; 
     padding: 10px;
+}
+.btn.custom-button.custom-button-edit {
+    background-color: #007bff !important; 
+    color: #ffffff !important;
+}
+
+.btn.custom-button.custom-button-delete {
+    background-color: #6c757d !important; 
+    color: #ffffff !important;
 }
