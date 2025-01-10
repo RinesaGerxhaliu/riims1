@@ -27,6 +27,12 @@ import EditEdukimi from "./features/EdukimiCRUD/EditEdukimi.jsx";
 import EditEksperienca from "./features/EksperiencaCRUD/EditEksperienca.jsx";
 import EditGjuhet from "./features/GjuhaCRUD/EditGjuhet.jsx";
 import EditHonorsAndAwards from "./features/HonorsAndAwardsCRUD/EditHonorsAndAwards.jsx";
+import EditLicensa from "./features/LicensaCRUD/EditLicensa.jsx";
+import EditMbikqyres from "./features/MbikqyresITemaveCRUD/EditMbikqyres.jsx";
+import EditProjekti from "./features/ProjektiCRUD/EditProjekti.jsx";
+import EditPublikimi from "./features/PublikimiCRUD/EditPublikimi.jsx";
+import EditPunaVullnetare from "./features/PunaVullnetareCRUD/EditPunaVullnetare.jsx";
+import EditSpecializimi from "./features/SpecializimiCRUD/EditSpecializim.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -338,6 +344,78 @@ function App() {
                   <LoggedInNavbar handleLogout={handleLogout} />
                   <div className="container mt-4">
                     <EditHonorsAndAwards />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/EditLicensa/:id"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditLicensa />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/EditMbikqyres/:id"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditMbikqyres />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/EditProjekti/:id"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditProjekti />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/EditPublikimi/:id"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditPublikimi />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/EditPunaVullnetare/:id"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditPunaVullnetare />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/EditSpecializimi/:id"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <EditSpecializimi />
                   </div>
                   <Footer />
                 </>

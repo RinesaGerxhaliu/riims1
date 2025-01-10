@@ -555,7 +555,7 @@ function PersonDetails() {
                                         <button className="btn btn-secondary me-2" onClick={() => toggleHideSpecializimi(spec.id)}>
                                             <i className={`bi ${hiddenSpecializimi.includes(spec.id) ? 'bi-eye-slash' : 'bi-eye'}`}></i>
                                         </button>
-                                        <Link to={`/EditSpecializim/${spec.id}`} className="btn custom-button custom-button-edit me-2">Edit</Link>
+                                        <Link to={`/EditSpecializimi/${spec.id}`} className="btn custom-button custom-button-edit me-2">Edit</Link>
                                         <button className="btn custom-button custom-button-delete" onClick={() => triggerSpecializimDelete(spec.id)}>Delete</button>
                                     </div>
                                 </div>
