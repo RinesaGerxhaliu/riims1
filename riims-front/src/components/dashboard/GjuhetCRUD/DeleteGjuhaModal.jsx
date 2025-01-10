@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../../assets/styles/customModal.css";
+import "../../../assets/styles/customModal.css";
 
 function DeleteGjuhaModal({ show, onClose, onDelete, token, gjuhe }) {
     const [isLoading, setIsLoading] = useState(false);

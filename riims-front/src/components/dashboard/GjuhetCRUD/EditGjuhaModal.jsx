@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "../../assets/styles/customModal.css";
+import "../../../assets/styles/customModal.css";
 
 function EditGjuhaModal({ show, onClose, onSave, token, gjuhe }) {
     const [initialValue, setInitialValue] = useState('');

@@ -4,9 +4,9 @@ import axios from 'axios';
 import AddGjuhaModal from './AddGjuhaModal';
 import EditGjuhaModal from './EditGjuhaModal'; 
 import DeleteGjuhaModal from './DeleteGjuhaModal';
-import AddNiveliGjuhesModal from '../NiveliGjuhesorCRUD/AddNiveliGjuhesor'; 
-import EditNiveliGjuhesModal from '../NiveliGjuhesorCRUD/EditNiveliGjuhesor'; 
-import "../../assets/styles/ManageLanguages.css";
+import AddNiveliGjuhesModal from '../../../features/NiveliGjuhesorCRUD/AddNiveliGjuhesor'; 
+import EditNiveliGjuhesModal from '../../../features/NiveliGjuhesorCRUD/EditNiveliGjuhesor'; 
+import "../../../assets/styles/ManageLanguages.css";
 
 const ManageLanguages = () => {
     const [languages, setLanguages] = useState([]);

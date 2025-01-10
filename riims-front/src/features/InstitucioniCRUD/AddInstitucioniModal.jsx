@@ -1,43 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import "../../assets/styles/customModal.css";
 
-function AddGjuhetModal({ show, onClose, onSave, token }) {
-    const [gjuhe, setGjuhe] = useState('');
+function AddInstitucioniModal({ show, onClose, onSave, token }) {
+    const [institucioni, setInstitucioni] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
 
-    useEffect(() => {
-        if (!show) {
-            setGjuhe('');
-            setError('');
-        }
-    }, [show]);
-
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (gjuhe.trim() === '') {
-            setError('Language cannot be empty.');
+        if (institucioni.trim() === '') {
+            setError('Institucioni name cannot be empty.');
             return;
         }
         setIsLoading(true);
         setError('');
         try {
-            const response = await fetch('https://localhost:7071/api/Gjuhet', { 
+            const response = await fetch('https://localhost:7071/api/Institucioni', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ emriGjuhes: gjuhe })
+                body: JSON.stringify({ Emri: institucioni }) 
             });
+
             if (!response.ok) {
-                throw new Error(`Failed to add language. Status: ${response.status}`);
+                throw new Error(`Failed to add Institucioni. Status: ${response.status}`);
             }
-            const newGjuhe = await response.json();
-            onSave(newGjuhe);
+
+            const newInstitucioni = await response.json();
+            onSave(newInstitucioni);
             onClose();
         } catch (error) {
-            setError('Error adding the language. Please try again.');
+            setError('Error adding the Institucioni. Please try again.');
         } finally {
             setIsLoading(false);
         }
@@ -47,31 +42,31 @@ function AddGjuhetModal({ show, onClose, onSave, token }) {
         <div className={`custom-modal ${show ? 'show' : ''}`}>
             <div className="custom-modal-content">
                 <div className="custom-modal-header">
-                    <h5>Shto gjuhë</h5>
+                    <h5>Shto institucion</h5>
                     <button className="close-button" onClick={() => {
                         onClose();
-                        setGjuhe('');
+                        setInstitucioni('');
                         setError('');
                     }}>&times;</button>
                 </div>
                 <div className="custom-modal-body">
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="gjuhe">Gjuha</label>
+                            <label htmlFor="institucioni">Institucioni</label>
                             <input
-                                id="gjuhe"
+                                id="institucioni"
                                 type="text"
-                                value={gjuhe}
-                                onChange={(e) => setGjuhe(e.target.value)}
-                                placeholder="Enter language"
+                                value={institucioni}
+                                onChange={(e) => setInstitucioni(e.target.value)}
+                                placeholder="Enter Institucioni name"
                                 className={`form-control ${error ? 'is-invalid' : ''}`}
                             />
-                            {error && <div className="invalid-feedback">{error}</div>} 
+                            {error && <div className="invalid-feedback">{error}</div>}
                         </div>
                         <div className="custom-modal-footer">
                             <button type="button" onClick={() => {
-                                onClose(); 
-                                setGjuhe('');
+                                onClose();
+                                setInstitucioni('');
                                 setError('');
                             }} disabled={isLoading} className="btn btn-secondary">
                                 Close
@@ -87,4 +82,4 @@ function AddGjuhetModal({ show, onClose, onSave, token }) {
     );
 }
 
-export default AddGjuhetModal;
+export default AddInstitucioniModal;

@@ -151,12 +151,12 @@ const AdminDashboard = () => {
           <Card className="text-center shadow-lg manage-languages-card animated-card">
             <Card.Body className="p-4">
               <FaUsers size={60} className="mb-3 text-white icon-background" />
-              <Card.Title className="fs-4 manage-languages-title">
+              <Card.Title className="fs-4 ac manage-languages-title">
                 Manage Languages
               </Card.Title>
               <Button
                 variant="primary"
-                className="mt-2 btn-dark-green"
+                className="mt-2 btn-dark-blue"
                 onClick={() => navigate("/manage-languages")}
               >
                 Go to Manage Languages
@@ -193,7 +193,7 @@ const AdminDashboard = () => {
               <Button
                 variant="primary"
                 className="mt-2 btn-dark-blue"
-                onClick={() => navigate("/ManageDepartamentet")}
+                onClick={() => navigate("/ManageInstitucioni")}
               >
                 Go to Manage Departamentet
               </Button>

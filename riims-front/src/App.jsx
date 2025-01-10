@@ -21,7 +21,6 @@ import PunaVullnetare from "./features/PunaVullnetareCRUD/AddPunaVullnetare.jsx"
 import MbikqyresITemave from "./features/MbikqyresITemaveCRUD/AddMbikqyresITemave.jsx";
 import Dashboard from "./components/dashboard/dashboard.jsx";
 import EditProfile from "./features/profile/EditProfile.jsx";
-import ManageLanguages from "./features/GjuhetCRUD/ManageLanguages.jsx";
 import EditAftesia from "./features/AftesiaCRUD/EditAftesia.jsx";
 import EditEdukimi from "./features/EdukimiCRUD/EditEdukimi.jsx";
 import EditEksperienca from "./features/EksperiencaCRUD/EditEksperienca.jsx";
@@ -33,6 +32,9 @@ import EditProjekti from "./features/ProjektiCRUD/EditProjekti.jsx";
 import EditPublikimi from "./features/PublikimiCRUD/EditPublikimi.jsx";
 import EditPunaVullnetare from "./features/PunaVullnetareCRUD/EditPunaVullnetare.jsx";
 import EditSpecializimi from "./features/SpecializimiCRUD/EditSpecializim.jsx";
+import ManageLanguages from "./components/dashboard/GjuhetCRUD/ManageLanguages.jsx";
+import ManageInstituconet from "./features/InstitucioniCRUD/ManageInstitucioni.jsx";
+import ManageNiveletAkademike from "./features/NiveliAkademikCRUD/ManageNiveletAkaademike.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -421,199 +423,7 @@ function App() {
                 </>
               }
             />
-            {/* 
-            <Route
-              path="/publikimi"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <Publikimi />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/personDetails"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <PersonDetails />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/EditEksperienca/:id"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <EditEksperienca />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-
-            <Route
-              path="/EditLicensa/:id"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <EditLicensa />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/EditAftesia/:id"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <EditAftesia />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/EditGjuhet/:id"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <EditGjuhet />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/EditSpecializim/:id"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <EditSpecializim />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/EditProjekti/:id"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <EditProjekti />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/EditEdukimi/:id"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <EditEdukimi />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/EditPunaVullnetare/:id"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <EditPunaVullnetare />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/EditMbikqyres/:id"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <EditMbikqyres />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/EditPublikimi/:id"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <EditPublikimi />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/EditHonorsAndAwards/:id"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <EditHonorsAndAwards />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/manageniveliakademik"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <ManageNiveliAkademik />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-            <Route path="/thecv" element={
-              <>
-                <LoggedInNavbar handleLogout={handleLogout} />
-                <div className="container mt-4">
-                  <TheCV />
-                </div>
-                <Footer />
-              </>
-            } />
-            />
-            <Route
-              path="/manage-languages"
-              element={
-                <>
-                  <LoggedInNavbar handleLogout={handleLogout} />
-                  <div className="container mt-4">
-                    <ManageLanguages />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-               <Route
+              <Route
               path="/ManageInstitucioni"
               element={
                 <>
@@ -624,6 +434,32 @@ function App() {
                   <Footer />
                 </>
               }
+            />
+             <Route
+              path="/manageniveliakademik"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <ManageNiveletAkademike />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            {/* 
+
+            <Route path="/thecv" element={
+              <>
+                <LoggedInNavbar handleLogout={handleLogout} />
+                <div className="container mt-4">
+                  <TheCV />
+                </div>
+                <Footer />
+              </>
+            } />
+            />
+           
             /> */}
             <Route path="*" element={<Navigate to="/" />} />
           </>
