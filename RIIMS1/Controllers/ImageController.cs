@@ -78,7 +78,9 @@ namespace RIIMSAPI.Controllers
                 return NotFound(new { message = "Image not found." });
             }
 
-            return Ok(new { url = image.FilePath });
+            var imageUrl = $"https://localhost:7071/images/{Path.GetFileName(image.FilePath)}";
+
+            return Ok(new { url = imageUrl });
         }
 
 

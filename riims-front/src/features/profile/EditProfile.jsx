@@ -69,7 +69,9 @@ function EditProfile() {
         mbiemri: personData.mbiemri || "",
         gjinia: personData.gjinia || "",
         adresa: personData.adresa || "",
-        dataELindjes: personData.dataELindjes ? formatDate(personData.dataELindjes) : "",
+        dataELindjes: personData.dataELindjes
+          ? formatDate(personData.dataELindjes)
+          : "",
         niveliAkademik: personData.niveliAkademik || "",
         numriTelefonit: personData.numriTelefonit || "",
       }));
@@ -88,15 +90,14 @@ function EditProfile() {
           foto: photoUrl,
         }));
       } catch (photoError) {
-        console.error("Error gjatë marrjes së fotos:", photoError);
+        console.error("Error fetching photo:", photoError);
         setFormData((prevFormData) => ({
           ...prevFormData,
           foto: defaultImage,
         }));
       }
-  
     } catch (error) {
-      console.error("Error gjatë marrjes së të dhënave:", error);
+      console.error("Error fetching profile data:", error);
     }
   };
   
@@ -106,7 +107,7 @@ function EditProfile() {
     const formData = new FormData();
     formData.append("File", file);
     formData.append("FileName", file.name);
-
+  
     try {
       const response = await axios.post(
         "https://localhost:7071/api/Image/upload",
@@ -118,18 +119,25 @@ function EditProfile() {
           },
         }
       );
+  
       const imageData = response.data;
       if (imageData && imageData.url) {
+        // Përditëso gjendjen me URL-në e re të fotografisë
         setFormData((prevFormData) => ({
           ...prevFormData,
           foto: imageData.url,
         }));
+        setSuccessMessage("Fotografia u ngarkua me sukses!");
+      } else {
+        throw new Error("Nuk u kthye URL për fotografinë.");
       }
     } catch (error) {
-      console.error("Gabim gjatë ngarkimit të imazhit", error);
-      alert("Gabim gjatë ngarkimit të imazhit. Ju lutemi provoni përsëri.");
+      console.error("Gabim gjatë ngarkimit të fotografisë:", error);
+      setErrorMessage("Gabim gjatë ngarkimit të fotografisë. Provoni përsëri.");
     }
   };
+  
+  
 
   const handleChange = async (e) => {
     if (e.target.name === "foto") {
@@ -162,27 +170,24 @@ function EditProfile() {
 
   const handleRemovePhoto = async () => {
     try {
-      const response = await axios.delete(
-        "https://localhost:7071/api/Image/delete",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-  
+      await axios.delete("https://localhost:7071/api/Image/delete", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setFormData((prevFormData) => ({
         ...prevFormData,
         foto: defaultImage,
       }));
-  
       alert("Photo removed successfully!");
     } catch (error) {
       console.error("Error removing photo:", error);
       alert("Error removing photo. Please try again.");
     }
   };
+
+  
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
