@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using RIIMS.Domain.Interfaces;
 
-namespace RIIMS.Infrastructure
+namespace RIIMS.Infrastructure.Service
 {
     public class FileStorageService : IFileStorageService
     {
@@ -25,7 +25,7 @@ namespace RIIMS.Infrastructure
             }
 
             var sanitizedFileName = Path.GetFileNameWithoutExtension(fileName);
-            var fullFileName = $"{sanitizedFileName}{Path.GetExtension(file.FileName)}"; 
+            var fullFileName = $"{sanitizedFileName}{Path.GetExtension(file.FileName)}";
 
             var filePath = Path.Combine(_imageFolderPath, fullFileName);
 

@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using RIIMS.Application.Services;
 using RIIMS.Domain.Interfaces;
 using RIIMSAPI.Domain.Interfaces;
-using RIIMS.Infrastructure;
 using RIIMS.Infrastructure.Repositories;
 using RIIMS.Application.Interfaces;
 using RIIMS.Domain.Entities;
@@ -15,6 +14,7 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
 using RIIMS.Infrastructure.Data;
+using RIIMS.Infrastructure.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
