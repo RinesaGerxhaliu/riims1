@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIIMS.Domain.Entities;
 using RIIMS.Domain.Interfaces;
+using RIIMS.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,30 +17,6 @@ namespace RIIMS.Infrastructure.Repositories
         public EksperiencaRepository(RiimsDbContext dbContext)
             => _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
 
-        public async Task<Eksperienca> CreateAsync(string userId, Eksperienca eksperienca)
-        {
-            eksperienca.UserId = userId;
-            await _dbContext.Eksperienca.AddAsync(eksperienca);
-            await _dbContext.SaveChangesAsync();
-            return eksperienca;
-        }
-
-        public async Task<Eksperienca?> DeleteAsync(Guid id)
-        {
-            var existingEksperienca = await _dbContext.Eksperienca
-                 .Include(e => e.Institucioni)
-                .FirstOrDefaultAsync(x => x.Id == id);
-
-            if (existingEksperienca == null)
-            {
-                return null;
-            }
-
-            _dbContext.Eksperienca.Remove(existingEksperienca);
-            await _dbContext.SaveChangesAsync();
-            return existingEksperienca;
-        }
-
         public async Task<List<Eksperienca>> GetAllAsync(string userId)
         {
             return await _dbContext.Eksperienca
@@ -51,8 +28,16 @@ namespace RIIMS.Infrastructure.Repositories
         public async Task<Eksperienca?> GetByIdAsync(Guid id)
         {
             return await _dbContext.Eksperienca
-                .Include(x => x.Institucioni) 
+                .Include(x => x.Institucioni)
                 .FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<Eksperienca> CreateAsync(string userId, Eksperienca eksperienca)
+        {
+            eksperienca.UserId = userId;
+            await _dbContext.Eksperienca.AddAsync(eksperienca);
+            await _dbContext.SaveChangesAsync();
+            return eksperienca;
         }
 
         public async Task<Eksperienca?> UpdateAsync(Guid id, Eksperienca eksperienca)
@@ -73,6 +58,22 @@ namespace RIIMS.Infrastructure.Repositories
             existingEksperienca.Pershkrimi = eksperienca.Pershkrimi;
             existingEksperienca.Institucioni = eksperienca.Institucioni;
 
+            await _dbContext.SaveChangesAsync();
+            return existingEksperienca;
+        }
+
+        public async Task<Eksperienca?> DeleteAsync(Guid id)
+        {
+            var existingEksperienca = await _dbContext.Eksperienca
+                 .Include(e => e.Institucioni)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (existingEksperienca == null)
+            {
+                return null;
+            }
+
+            _dbContext.Eksperienca.Remove(existingEksperienca);
             await _dbContext.SaveChangesAsync();
             return existingEksperienca;
         }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIIMS.Domain.Entities;
 using RIIMS.Domain.Interfaces;
-using RIIMS.Infrastructure;
+using RIIMS.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,30 +17,6 @@ namespace RIIMS.Infrastructure.Repositories
         public MbikqyresITemaveRepository(RiimsDbContext dbcontext)
         {
             this.dbcontext = dbcontext;
-        }
-        public async Task<MbikqyresITemave> CreateAsync(string userId, MbikqyresITemave mbikqyres)
-        {
-            mbikqyres.UserId = userId;
-            await dbcontext.MbikqyresITemave.AddAsync(mbikqyres);
-            await dbcontext.SaveChangesAsync();
-            return mbikqyres;
-        }
-
-        public async Task<MbikqyresITemave?> DeleteAsync(Guid id)
-        {
-            var existingMbikqyres = await dbcontext.MbikqyresITemave
-               .Include(a => a.Departamenti)
-               .FirstOrDefaultAsync(x => x.Id == id);
-
-            if (existingMbikqyres == null)
-            {
-                return null;
-            }
-
-            dbcontext.MbikqyresITemave.Remove(existingMbikqyres);
-            await dbcontext.SaveChangesAsync();
-
-            return existingMbikqyres;
         }
 
         public async Task<List<MbikqyresITemave>> GetAllAsync(string userId)
@@ -58,6 +34,14 @@ namespace RIIMS.Infrastructure.Repositories
             .FirstOrDefaultAsync(a => a.Id == id);
         }
 
+        public async Task<MbikqyresITemave> CreateAsync(string userId, MbikqyresITemave mbikqyres)
+        {
+            mbikqyres.UserId = userId;
+            await dbcontext.MbikqyresITemave.AddAsync(mbikqyres);
+            await dbcontext.SaveChangesAsync();
+            return mbikqyres;
+        }
+
         public async Task<MbikqyresITemave?> UpdateAsync(Guid id, MbikqyresITemave mbikqyres)
         {
             var existingMbikqyres = await dbcontext.MbikqyresITemave.FirstOrDefaultAsync(x => x.Id == id);
@@ -73,6 +57,23 @@ namespace RIIMS.Infrastructure.Repositories
             existingMbikqyres.DepartamentiId = mbikqyres.DepartamentiId;
 
             await dbcontext.SaveChangesAsync();
+            return existingMbikqyres;
+        }
+
+        public async Task<MbikqyresITemave?> DeleteAsync(Guid id)
+        {
+            var existingMbikqyres = await dbcontext.MbikqyresITemave
+               .Include(a => a.Departamenti)
+               .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (existingMbikqyres == null)
+            {
+                return null;
+            }
+
+            dbcontext.MbikqyresITemave.Remove(existingMbikqyres);
+            await dbcontext.SaveChangesAsync();
+
             return existingMbikqyres;
         }
     }

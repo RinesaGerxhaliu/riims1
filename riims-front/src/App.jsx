@@ -35,6 +35,7 @@ import EditSpecializimi from "./features/SpecializimiCRUD/EditSpecializim.jsx";
 import ManageLanguages from "./components/dashboard/GjuhetCRUD/ManageLanguages.jsx";
 import ManageInstituconet from "./features/InstitucioniCRUD/ManageInstitucioni.jsx";
 import ManageNiveletAkademike from "./features/NiveliAkademikCRUD/ManageNiveletAkaademike.jsx";
+import TheCV from "./features/CVdetails/TheCV.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -442,6 +443,18 @@ function App() {
                   <LoggedInNavbar handleLogout={handleLogout} />
                   <div className="container mt-4">
                     <ManageNiveletAkademike />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/thecv"
+              element={
+                <>
+                  <LoggedInNavbar handleLogout={handleLogout} />
+                  <div className="container mt-4">
+                    <TheCV />
                   </div>
                   <Footer />
                 </>

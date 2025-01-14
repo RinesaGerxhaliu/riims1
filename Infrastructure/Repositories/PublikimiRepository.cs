@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIIMS.Domain.Entities;
 using RIIMS.Domain.Interfaces;
-using RIIMS.Infrastructure;
+using RIIMS.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,31 +18,6 @@ namespace RIIMS.Infrastructure.Repositories
         {
             this.dbcontext = dbcontext;
         }
-        public async Task<Publikimi> CreateAsync(string userId, Publikimi publikimi)
-        {
-            publikimi.UserId = userId;
-            await dbcontext.Publikimi.AddAsync(publikimi);
-            await dbcontext.SaveChangesAsync();
-            return publikimi;
-        }
-
-        public async Task<Publikimi?> DeleteAsync(Guid id)
-        {
-
-            var existingAftesia = await dbcontext.Publikimi
-                .Include(a => a.Departamenti)
-                .FirstOrDefaultAsync(x => x.Id == id);
-
-            if (existingAftesia == null)
-            {
-                return null;
-            }
-
-            dbcontext.Publikimi.Remove(existingAftesia);
-            await dbcontext.SaveChangesAsync();
-
-            return existingAftesia;
-        }
 
         public async Task<List<Publikimi>> GetAllAsync(string userId)
         {
@@ -58,6 +33,14 @@ namespace RIIMS.Infrastructure.Repositories
              .Include(a => a.Departamenti)
              .FirstOrDefaultAsync(a => a.Id == id);
 
+        }
+
+        public async Task<Publikimi> CreateAsync(string userId, Publikimi publikimi)
+        {
+            publikimi.UserId = userId;
+            await dbcontext.Publikimi.AddAsync(publikimi);
+            await dbcontext.SaveChangesAsync();
+            return publikimi;
         }
 
         public async Task<Publikimi?> UpdateAsync(Guid id, Publikimi publikimi)
@@ -77,6 +60,24 @@ namespace RIIMS.Infrastructure.Repositories
             existingAftesia.DepartamentiId = publikimi.DepartamentiId;
 
             await dbcontext.SaveChangesAsync();
+            return existingAftesia;
+        }
+
+        public async Task<Publikimi?> DeleteAsync(Guid id)
+        {
+
+            var existingAftesia = await dbcontext.Publikimi
+                .Include(a => a.Departamenti)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (existingAftesia == null)
+            {
+                return null;
+            }
+
+            dbcontext.Publikimi.Remove(existingAftesia);
+            await dbcontext.SaveChangesAsync();
+
             return existingAftesia;
         }
     }

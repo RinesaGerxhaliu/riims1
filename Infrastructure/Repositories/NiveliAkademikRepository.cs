@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIIMS.Domain.Entities;
 using RIIMS.Domain.Interfaces;
-using RIIMS.Infrastructure;
+using RIIMS.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,28 +19,6 @@ namespace RIIMS.Infrastructure.Repositories
             this.dbcontext = dbcontext;
         }
 
-        public async Task<NiveliAkademik> CreateAsync(NiveliAkademik niveliAkademik)
-        {
-            await dbcontext.NiveliAkademik.AddAsync(niveliAkademik);
-            await dbcontext.SaveChangesAsync();
-            return niveliAkademik;
-        }
-
-        public async Task<NiveliAkademik?> DeleteAsync(Guid id)
-        {
-            var existingInstitucioni = await dbcontext.NiveliAkademik.FirstOrDefaultAsync(x => x.Id == id);
-
-            if (existingInstitucioni == null)
-            {
-                return null;
-            }
-
-            dbcontext.NiveliAkademik.Remove(existingInstitucioni);
-            await dbcontext.SaveChangesAsync();
-
-            return existingInstitucioni;
-        }
-
         public async Task<List<NiveliAkademik>> GetAllAsync()
         {
             return await dbcontext.NiveliAkademik.ToListAsync();
@@ -51,19 +29,41 @@ namespace RIIMS.Infrastructure.Repositories
             return await dbcontext.NiveliAkademik.FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<NiveliAkademik> CreateAsync(NiveliAkademik niveliAkademik)
+        {
+            await dbcontext.NiveliAkademik.AddAsync(niveliAkademik);
+            await dbcontext.SaveChangesAsync();
+            return niveliAkademik;
+        }
+
         public async Task<NiveliAkademik?> UpdateAsync(Guid id, NiveliAkademik niveliAkademik)
         {
-            var existingInstitucioni = await dbcontext.NiveliAkademik.FirstOrDefaultAsync(x => x.Id == id);
+            var existingNiveliAkademik = await dbcontext.NiveliAkademik.FirstOrDefaultAsync(x => x.Id == id);
 
-            if (existingInstitucioni == null)
+            if (existingNiveliAkademik == null)
             {
                 return null;
             }
 
-            existingInstitucioni.lvl = niveliAkademik.lvl;
+            existingNiveliAkademik.lvl = niveliAkademik.lvl;
 
             await dbcontext.SaveChangesAsync();
-            return existingInstitucioni;
+            return existingNiveliAkademik;
+        }
+
+        public async Task<NiveliAkademik?> DeleteAsync(Guid id)
+        {
+            var existingNiveliAkademik = await dbcontext.NiveliAkademik.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (existingNiveliAkademik == null)
+            {
+                return null;
+            }
+
+            dbcontext.NiveliAkademik.Remove(existingNiveliAkademik);
+            await dbcontext.SaveChangesAsync();
+
+            return existingNiveliAkademik;
         }
 
         public async Task<NiveliAkademik?> GetByNameAsync(string lvl)
@@ -71,5 +71,7 @@ namespace RIIMS.Infrastructure.Repositories
             return await dbcontext.NiveliAkademik
                 .FirstOrDefaultAsync(i => i.lvl == lvl);
         }
+
+
     }
 }

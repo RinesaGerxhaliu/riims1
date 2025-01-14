@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using RIIMS.Domain.Entities;
-namespace RIIMS.Infrastructure
+namespace RIIMS.Infrastructure.Data
 
 {
     public class RiimsDbContext : IdentityDbContext<User>
     {
         public RiimsDbContext(DbContextOptions<RiimsDbContext> dbContextOptions) : base(dbContextOptions) { }
- 
+
         public DbSet<User> User { get; set; }
         public DbSet<Eksperienca> Eksperienca { get; set; }
         public DbSet<Gjuhet> Gjuhet { get; set; }
@@ -57,11 +57,11 @@ namespace RIIMS.Infrastructure
                 }
 
             };
-         
 
 
-        //Seed institucionet into the database
-        modelBuilder.Entity<Institucioni>().HasData(institucionet);
+
+            //Seed institucionet into the database
+            modelBuilder.Entity<Institucioni>().HasData(institucionet);
 
 
             //Seed data for NiveliAkademik

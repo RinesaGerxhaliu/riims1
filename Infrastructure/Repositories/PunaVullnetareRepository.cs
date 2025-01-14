@@ -2,7 +2,7 @@
 using RIIMS.Domain.Entities;
 using RIIMS.Domain.Interfaces;
 using RIIMSAPI.Domain.Interfaces;
-using RIIMS.Infrastructure;
+using RIIMS.Infrastructure.Data;
 
 
 namespace RIIMS.Infrastructure.Repositories
@@ -14,30 +14,6 @@ namespace RIIMS.Infrastructure.Repositories
         public PunaVullnetareRepository(RiimsDbContext dbContext)
         {
             _dbContext = dbContext;
-        }
-
-        public async Task<PunaVullnetare> CreateAsync(string userId, PunaVullnetare punaVullnetare)
-        {
-            punaVullnetare.UserId = userId;
-            await _dbContext.PunaVullnetare.AddAsync(punaVullnetare);
-            await _dbContext.SaveChangesAsync();
-            return punaVullnetare;
-        }
-
-        public async Task<PunaVullnetare?> DeleteAsync(Guid id)
-        {
-            var existingPuna = await _dbContext.PunaVullnetare
-                .Include(p => p.Institucioni)
-                .FirstOrDefaultAsync(p => p.Id == id);
-
-            if (existingPuna == null)
-            {
-                return null;
-            }
-
-            _dbContext.PunaVullnetare.Remove(existingPuna);
-            await _dbContext.SaveChangesAsync();
-            return existingPuna;
         }
 
         public async Task<List<PunaVullnetare>> GetAllAsync(string userId)
@@ -55,7 +31,15 @@ namespace RIIMS.Infrastructure.Repositories
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<PunaVullnetare?> UpdateAsync(Guid id, PunaVullnetare updatedPunaVullnetare)
+        public async Task<PunaVullnetare> CreateAsync(string userId, PunaVullnetare punaVullnetare)
+        {
+            punaVullnetare.UserId = userId;
+            await _dbContext.PunaVullnetare.AddAsync(punaVullnetare);
+            await _dbContext.SaveChangesAsync();
+            return punaVullnetare;
+        }
+
+        public async Task<PunaVullnetare?> UpdateAsync(Guid id, PunaVullnetare punaVullnetare)
         {
             var existingPuna = await _dbContext.PunaVullnetare.FirstOrDefaultAsync(p => p.Id == id);
 
@@ -64,12 +48,28 @@ namespace RIIMS.Infrastructure.Repositories
                 return null;
             }
 
-            existingPuna.Roli = updatedPunaVullnetare.Roli;
-            existingPuna.DataFillimit = updatedPunaVullnetare.DataFillimit;
-            existingPuna.DataMbarimit = updatedPunaVullnetare.DataMbarimit;
-            existingPuna.Pershkrimi = updatedPunaVullnetare.Pershkrimi;
-            existingPuna.InstitucioniId = updatedPunaVullnetare.InstitucioniId;
+            existingPuna.Roli = punaVullnetare.Roli;
+            existingPuna.DataFillimit = punaVullnetare.DataFillimit;
+            existingPuna.DataMbarimit = punaVullnetare.DataMbarimit;
+            existingPuna.Pershkrimi = punaVullnetare.Pershkrimi;
+            existingPuna.InstitucioniId = punaVullnetare.InstitucioniId;
 
+            await _dbContext.SaveChangesAsync();
+            return existingPuna;
+        }
+
+        public async Task<PunaVullnetare?> DeleteAsync(Guid id)
+        {
+            var existingPuna = await _dbContext.PunaVullnetare
+                .Include(p => p.Institucioni)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (existingPuna == null)
+            {
+                return null;
+            }
+
+            _dbContext.PunaVullnetare.Remove(existingPuna);
             await _dbContext.SaveChangesAsync();
             return existingPuna;
         }

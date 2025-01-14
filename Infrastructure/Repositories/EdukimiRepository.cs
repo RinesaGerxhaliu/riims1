@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIIMS.Domain.Entities;
 using RIIMS.Domain.Interfaces;
+using RIIMS.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,32 +19,6 @@ namespace RIIMS.Infrastructure.Repositories
             this.dbcontext = dbcontext;
         }
 
-        public async Task<Edukimi> CreateAsync(string userId, Edukimi edukimi)
-        {
-            edukimi.UserId = userId;
-            await dbcontext.Edukimi.AddAsync(edukimi);
-            await dbcontext.SaveChangesAsync();
-            return edukimi;
-        }
-
-        public async Task<Edukimi?> DeleteAsync(Guid id)
-        {
-            var existingEdukimi = await dbcontext.Edukimi
-                .Include(pv => pv.Institucioni)
-                .Include(e => e.NiveliAkademik)
-                .FirstOrDefaultAsync(x => x.Id == id);
-
-            if (existingEdukimi == null)
-            {
-                return null;
-            }
-
-            dbcontext.Edukimi.Remove(existingEdukimi);
-            await dbcontext.SaveChangesAsync();
-
-            return existingEdukimi;
-        }
-
         public async Task<List<Edukimi>> GetAllAsync(string userId)
         {
             return await dbcontext.Edukimi
@@ -59,6 +34,14 @@ namespace RIIMS.Infrastructure.Repositories
             .Include(e => e.Institucioni)
             .Include(e => e.NiveliAkademik)
             .FirstOrDefaultAsync(e => e.Id == id);
+        }
+
+        public async Task<Edukimi> CreateAsync(string userId, Edukimi edukimi)
+        {
+            edukimi.UserId = userId;
+            await dbcontext.Edukimi.AddAsync(edukimi);
+            await dbcontext.SaveChangesAsync();
+            return edukimi;
         }
 
         public async Task<Edukimi?> UpdateAsync(Guid id, Edukimi edukimi)
@@ -79,6 +62,24 @@ namespace RIIMS.Infrastructure.Repositories
             existingEdukimi.NiveliAkademik = edukimi.NiveliAkademik;
 
             await dbcontext.SaveChangesAsync();
+            return existingEdukimi;
+        }
+
+        public async Task<Edukimi?> DeleteAsync(Guid id)
+        {
+            var existingEdukimi = await dbcontext.Edukimi
+                .Include(pv => pv.Institucioni)
+                .Include(e => e.NiveliAkademik)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (existingEdukimi == null)
+            {
+                return null;
+            }
+
+            dbcontext.Edukimi.Remove(existingEdukimi);
+            await dbcontext.SaveChangesAsync();
+
             return existingEdukimi;
         }
     }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIIMS.Domain.Entities;
 using RIIMS.Domain.Interfaces;
-using RIIMS.Infrastructure;
+using RIIMS.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,30 +18,6 @@ namespace RIIMS.Infrastructure.Repositories
         {
             this.dbcontext = dbcontext;
         }
-        public async Task<Licensat> CreateAsync(string userId, Licensat licensat)
-        {
-            licensat.UserId = userId;
-            await dbcontext.Licensat.AddAsync(licensat);
-            await dbcontext.SaveChangesAsync();
-            return licensat;
-        }
-
-        public async Task<Licensat?> DeleteAsync(Guid id)
-        {
-            var existingLicensa = await dbcontext.Licensat
-               .Include(a => a.Institucioni)
-               .FirstOrDefaultAsync(x => x.Id == id);
-
-            if (existingLicensa == null)
-            {
-                return null;
-            }
-
-            dbcontext.Licensat.Remove(existingLicensa);
-            await dbcontext.SaveChangesAsync();
-
-            return existingLicensa;
-        }
 
         public async Task<List<Licensat>> GetAllAsync(string userId)
         {
@@ -56,6 +32,14 @@ namespace RIIMS.Infrastructure.Repositories
             return await dbcontext.Licensat
              .Include(a => a.Institucioni)
              .FirstOrDefaultAsync(a => a.Id == id);
+        }
+
+        public async Task<Licensat> CreateAsync(string userId, Licensat licensat)
+        {
+            licensat.UserId = userId;
+            await dbcontext.Licensat.AddAsync(licensat);
+            await dbcontext.SaveChangesAsync();
+            return licensat;
         }
 
         public async Task<Licensat?> UpdateAsync(Guid id, Licensat licensat)
@@ -74,6 +58,23 @@ namespace RIIMS.Infrastructure.Repositories
             existingLicensa.InstitucioniId = licensat.InstitucioniId;
             
             await dbcontext.SaveChangesAsync();
+            return existingLicensa;
+        }
+
+        public async Task<Licensat?> DeleteAsync(Guid id)
+        {
+            var existingLicensa = await dbcontext.Licensat
+               .Include(a => a.Institucioni)
+               .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (existingLicensa == null)
+            {
+                return null;
+            }
+
+            dbcontext.Licensat.Remove(existingLicensa);
+            await dbcontext.SaveChangesAsync();
+
             return existingLicensa;
         }
     }

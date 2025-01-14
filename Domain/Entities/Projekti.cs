@@ -19,8 +19,5 @@
 
         public Guid InstitucioniId { get; set; }
         public Institucioni Institucioni { get; set; }
-
-
-
     }
 }

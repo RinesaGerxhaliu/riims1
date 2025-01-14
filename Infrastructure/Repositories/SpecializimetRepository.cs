@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIIMS.Domain.Entities;
 using RIIMS.Domain.Interfaces;
-using RIIMS.Infrastructure;
+using RIIMS.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,31 +17,6 @@ namespace RIIMS.Infrastructure.Repositories
         public SpecializimetRepository(RiimsDbContext dbcontext)
         {
             this.dbcontext = dbcontext;
-        }
-        public async Task<Specializimet> CreateAsync(string userId, Specializimet specializimet)
-        {
-            specializimet.UserId = userId;
-            await dbcontext.Specializimet.AddAsync(specializimet);
-            await dbcontext.SaveChangesAsync();
-            return specializimet;
-        }
-
-        public async Task<Specializimet?> DeleteAsync(Guid id)
-        {
-
-            var existingAftesia = await dbcontext.Specializimet
-                .Include(a => a.Institucioni)
-                .FirstOrDefaultAsync(x => x.Id == id);
-
-            if (existingAftesia == null)
-            {
-                return null;
-            }
-
-            dbcontext.Specializimet.Remove(existingAftesia);
-            await dbcontext.SaveChangesAsync();
-
-            return existingAftesia;
         }
 
         public async Task<List<Specializimet>> GetAllAsync(string userId)
@@ -60,7 +35,15 @@ namespace RIIMS.Infrastructure.Repositories
 
         }
 
-        public async Task<Specializimet?> UpdateAsync(Guid id, Specializimet Specializimet)
+        public async Task<Specializimet> CreateAsync(string userId, Specializimet specializimet)
+        {
+            specializimet.UserId = userId;
+            await dbcontext.Specializimet.AddAsync(specializimet);
+            await dbcontext.SaveChangesAsync();
+            return specializimet;
+        }
+
+        public async Task<Specializimet?> UpdateAsync(Guid id, Specializimet specializimet)
         {
             var existingAftesia = await dbcontext.Specializimet.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -69,15 +52,33 @@ namespace RIIMS.Infrastructure.Repositories
                 return null;
             }
 
-            existingAftesia.llojiIspecializimit = Specializimet.llojiIspecializimit;
-            existingAftesia.lokacionit = Specializimet.lokacionit;
-            existingAftesia.dataEFillimit = Specializimet.dataEFillimit;
-            existingAftesia.dataEMbarimit = Specializimet.dataEMbarimit;
-            existingAftesia.aftesiteEfituara = Specializimet.aftesiteEfituara;
-            existingAftesia.pershkrimi = Specializimet.pershkrimi;
-            existingAftesia.nrKredive = Specializimet.nrKredive;
-            existingAftesia.InstitucioniId = Specializimet.InstitucioniId;
+            existingAftesia.llojiIspecializimit = specializimet.llojiIspecializimit;
+            existingAftesia.lokacionit = specializimet.lokacionit;
+            existingAftesia.dataEFillimit = specializimet.dataEFillimit;
+            existingAftesia.dataEMbarimit = specializimet.dataEMbarimit;
+            existingAftesia.aftesiteEfituara = specializimet.aftesiteEfituara;
+            existingAftesia.pershkrimi = specializimet.pershkrimi;
+            existingAftesia.nrKredive = specializimet.nrKredive;
+            existingAftesia.InstitucioniId = specializimet.InstitucioniId;
             await dbcontext.SaveChangesAsync();
+            return existingAftesia;
+        }
+
+        public async Task<Specializimet?> DeleteAsync(Guid id)
+        {
+
+            var existingAftesia = await dbcontext.Specializimet
+                .Include(a => a.Institucioni)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (existingAftesia == null)
+            {
+                return null;
+            }
+
+            dbcontext.Specializimet.Remove(existingAftesia);
+            await dbcontext.SaveChangesAsync();
+
             return existingAftesia;
         }
     }

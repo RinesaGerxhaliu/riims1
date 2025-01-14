@@ -16,7 +16,7 @@
 
         public DateTime? DataMbarimit { get; set; }
 
-        public String? Pershkrimi { get; set; }
+        public string? Pershkrimi { get; set; }
 
         public string UserId { get; set; }
         public User User { get; set; }

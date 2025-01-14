@@ -6,7 +6,5 @@
 
         public string EmriGjuhes { get; set; }
 
-        public ICollection<UserGjuhet> UserGjuhet { get; set; } = new HashSet<UserGjuhet>();
-
     }
 }

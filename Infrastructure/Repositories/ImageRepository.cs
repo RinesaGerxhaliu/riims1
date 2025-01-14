@@ -1,4 +1,5 @@
 ﻿using RIIMS.Domain.Interfaces;
+using RIIMS.Infrastructure.Data;
 using Image = RIIMS.Domain.Entities.Image;
 
 namespace RIIMS.Infrastructure.Repositories

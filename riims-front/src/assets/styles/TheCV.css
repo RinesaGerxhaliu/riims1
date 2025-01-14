@@ -1,0 +1,45 @@
+.circle-bg {
+    background: linear-gradient(135deg, #244082, #1e2a5b);
+    color: white;
+    width: 250px;
+    height: 40px; 
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 20px 0; 
+}
+
+.text-white {
+    font-size: 16px; 
+    font-weight: bold; 
+    margin: 0;
+}
+ .sidebar-circle-bg {
+    background: transparent; 
+    color: white;
+    width: 250px;
+    height: 40px; 
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 20px 0; 
+    border: 2px solid #2565b3; 
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .no-gutters > .col,
+  .no-gutters > [class^="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }

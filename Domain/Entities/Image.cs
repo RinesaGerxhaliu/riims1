@@ -16,7 +16,5 @@ namespace RIIMS.Domain.Entities
         public long FileSizeInBytes { get; set; }
         public string FilePath { get; set; }
 
-        public ICollection<User> Users { get; set; } = new HashSet<User>();
-
     }
 }

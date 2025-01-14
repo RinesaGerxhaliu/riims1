@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RIIMS.Domain.Entities;
 using RIIMS.Domain.Interfaces;
-using RIIMS.Infrastructure;
+using RIIMS.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,33 +18,6 @@ namespace RIIMS.Infrastructure.Repositories
         {
             this.dbcontext = dbcontext;
         }
-
-        public async Task<UserGjuhet> CreateAsync(string userId, UserGjuhet userGjuhet)
-        {
-            userGjuhet.UserId = userId;
-            await dbcontext.UserGjuhet.AddAsync(userGjuhet);
-            await dbcontext.SaveChangesAsync();
-            return userGjuhet;
-        }
-
-        public async Task<UserGjuhet?> DeleteAsync(Guid id)
-        {
-            var existingGjuha = await dbcontext.UserGjuhet
-                .Include(x => x.NiveliGjuhesor)
-                .Include(x => x.Gjuha)
-                .FirstOrDefaultAsync(x => x.Id == id);
-
-            if (existingGjuha == null)
-            {
-                return null;
-            }
-
-            dbcontext.UserGjuhet.Remove(existingGjuha);
-            await dbcontext.SaveChangesAsync();
-
-            return existingGjuha;
-        }
-
         public async Task<List<UserGjuhet>> GetAllAsync(string userId)
         {
             return await dbcontext.UserGjuhet
@@ -62,6 +35,14 @@ namespace RIIMS.Infrastructure.Repositories
              .FirstOrDefaultAsync(a => a.Id == id);
         }
 
+        public async Task<UserGjuhet> CreateAsync(string userId, UserGjuhet userGjuhet)
+        {
+            userGjuhet.UserId = userId;
+            await dbcontext.UserGjuhet.AddAsync(userGjuhet);
+            await dbcontext.SaveChangesAsync();
+            return userGjuhet;
+        }
+
         public async Task<UserGjuhet?> UpdateAsync(Guid id, UserGjuhet userGjuhet)
         {
             var existingGjuha = await dbcontext.UserGjuhet.FirstOrDefaultAsync(x => x.Id == id);
@@ -75,6 +56,24 @@ namespace RIIMS.Infrastructure.Repositories
             existingGjuha.NiveliGjuhesorId = userGjuhet.NiveliGjuhesorId;
 
             await dbcontext.SaveChangesAsync();
+            return existingGjuha;
+        }
+
+        public async Task<UserGjuhet?> DeleteAsync(Guid id)
+        {
+            var existingGjuha = await dbcontext.UserGjuhet
+                .Include(x => x.NiveliGjuhesor)
+                .Include(x => x.Gjuha)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (existingGjuha == null)
+            {
+                return null;
+            }
+
+            dbcontext.UserGjuhet.Remove(existingGjuha);
+            await dbcontext.SaveChangesAsync();
+
             return existingGjuha;
         }
     }
